@@ -14,7 +14,7 @@ public class FloorLayerManager : MonoBehaviour
 
     [SerializeField] private float _moveSpeed;
 
-    private Transform[] _spawnedFloorParts = new Transform[12];
+    private List<Transform> _spawnedFloorParts = new List<Transform>();
 
     private void Start()
     {
@@ -28,29 +28,35 @@ public class FloorLayerManager : MonoBehaviour
 
     private void InstantiateStartFloorParts()
     {
-        for (int i = 0; i < _numberOfFloo11111rPartsAtStart; i++)
+        for (int i = 0; i < _numberOfFloorPartsAtStart; i++)
         {
-            float spawnXOffset = GetSpawnXOffset(i);
-
-            Vector3 spawmPosition = new Vector3(spawnXOffset, 0, 0);
-
-           Transform spawnFloorPartInstance =
-                Instantiate(_floorPartObjectPrefab, spawmPosition, transform.rotation, _floorPartsParent);
-
-            _spawnedFloorParts[i] = spawnFloorPartInstance;
+            SpawnFloorPartInstance();
         }
     }
 
-    private float GetSpawnXOffset(int i)
+    private void SpawnFloorPartInstance()
+    {
+        float spawnXOffset = GetSpawnXOffset();
+
+        Vector3 spawmPosition = new Vector3(spawnXOffset, 0, 0);
+
+        Transform spawnFloorPartInstance =
+             Instantiate(_floorPartObjectPrefab, spawmPosition, transform.rotation, _floorPartsParent);
+
+        _spawnedFloorParts.Add(spawnFloorPartInstance);
+    }
+
+    private float GetSpawnXOffset()
     {
         float spawnXOffset;
-        if (i == 0)
+        if (_spawnedFloorParts.Count == 0)
         {
             spawnXOffset = 0f;
         }
         else
         {
-            spawnXOffset = _floorPartLength * i;
+            //spawnXOffset = _floorPartLength * i;
+            spawnXOffset = _spawnedFloorParts[_spawnedFloorParts.Count - 1].transform.position.x + _floorPartLength;
         }
 
         return spawnXOffset;
@@ -58,9 +64,17 @@ public class FloorLayerManager : MonoBehaviour
 
     private void MoveFloorParts()
     {
-        for (int i = 0; i < _spawnedFloorParts.Length; i++)
+        for (int i = 0; i < _spawnedFloorParts.Count; i++)
         {
-            _spawnedFloorParts[i].transform.Translate(-transform.right * (_moveSpeed * Time.deltaTime));
+            Transform spawnedFloorPartInstance = _spawnedFloorParts[i];
+            spawnedFloorPartInstance.Translate(-transform.right * (_moveSpeed * Time.deltaTime));
+
+            if (spawnedFloorPartInstance.position.x <= Camera.main.transform.position.x - _floorPartLength)
+            {
+                _spawnedFloorParts.Remove(spawnedFloorPartInstance);
+                Destroy(spawnedFloorPartInstance.gameObject);
+                SpawnFloorPartInstance();
+            }
         }
     }
 }
