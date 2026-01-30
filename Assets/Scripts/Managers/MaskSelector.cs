@@ -18,7 +18,7 @@ public class MaskSelector : MonoBehaviour
     {
         DeselectAllSlots();
         SelectActiveSlot(_activeSlotIndexNumber);
-        ChangeActiveMask();
+        //ChangeActiveMask();
     }
 
     private void OnEnable()
