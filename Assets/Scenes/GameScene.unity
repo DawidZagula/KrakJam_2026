@@ -738,10 +738,12 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ac959b102c27cdb4ca8be4bbd2565ab9, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: '::'
+  m_EditorClassIdentifier: Assembly-CSharp::ScoreManager
   score: 0
-  scoreInterval: 1
+  scoreInterval: 0.5
   pointsPerTick: 1
+  scoreAccumulationModifier: 0.75
+  pointMultiplierBetweenLevels: 2
   scoreText: {fileID: 2050044724}
 --- !u!1 &428230852
 GameObject:
@@ -2573,7 +2575,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnvironmentLevelManager
   _currentEnvironmentLevel: 0
   _currentTimeToChangeLevel: 0
-  _minTimeToChangeLevel: 15
+  _minTimeToChangeLevel: 20
   _maxTimeToChangeLevel: 30
 --- !u!1 &1437985232
 GameObject:
