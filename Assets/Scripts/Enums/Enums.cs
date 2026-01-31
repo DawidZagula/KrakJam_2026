@@ -17,7 +17,8 @@ public enum MovableParts
 {
     Floor,
     Background,
-    Foreground
+    Foreground,
+    Edge
 }
 
 public enum EnvironmentLevel

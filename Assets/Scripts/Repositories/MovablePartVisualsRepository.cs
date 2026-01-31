@@ -17,6 +17,8 @@ public class MovablePartVisualsRepository : MonoBehaviour
     [SerializeField] private Sprite[] _floorPartSprites_TestLevel2;
     [SerializeField] private Sprite[] _backroundPartSprites_TestLevel2;
     [SerializeField] private Sprite[] _foregroundPartSprites_TestLevel2;
+    [Space]
+    [SerializeField] private Sprite _edgeSprite;
 
     private readonly List<Sprite> _currentLevelFloorPartSprites = new List<Sprite>();
     private readonly List<Sprite> _currentLevelBackgroundSprites = new List<Sprite>();
@@ -126,5 +128,10 @@ public class MovablePartVisualsRepository : MonoBehaviour
                 randomIndex = Random.Range(0, _currentLevelForegroundSprites.Count);
                 return (_currentLevelForegroundSprites[randomIndex]);
         }
+    }
+
+    public Sprite GetEdgeSprite()
+    {
+        return _edgeSprite;
     }
 }

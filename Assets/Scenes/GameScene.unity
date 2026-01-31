@@ -872,22 +872,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MovablePartVisualsRepository
   _floorPartSprites_TestLevel0:
   - {fileID: 21300000, guid: 6b66f721112b4ee4ba0732444983f7e5, type: 3}
-  - {fileID: 21300000, guid: 442bd0a4735f14b4aa8a15252137f7e8, type: 3}
-  - {fileID: 21300000, guid: 180ade28349e05f469d85823e4d3bae5, type: 3}
   _backroundPartSprites_TestLevel0: []
   _foregroundPartSprites_TestLevel0: []
   _floorPartSprites_TestLevel1:
   - {fileID: 21300000, guid: 6b66f721112b4ee4ba0732444983f7e5, type: 3}
-  - {fileID: 21300000, guid: 442bd0a4735f14b4aa8a15252137f7e8, type: 3}
-  - {fileID: 21300000, guid: 180ade28349e05f469d85823e4d3bae5, type: 3}
   _backroundPartSprites_TestLevel1: []
   _foregroundPartSprites_TestLevel1: []
   _floorPartSprites_TestLevel2:
   - {fileID: 21300000, guid: 6b66f721112b4ee4ba0732444983f7e5, type: 3}
-  - {fileID: 21300000, guid: 442bd0a4735f14b4aa8a15252137f7e8, type: 3}
-  - {fileID: 21300000, guid: 180ade28349e05f469d85823e4d3bae5, type: 3}
   _backroundPartSprites_TestLevel2: []
   _foregroundPartSprites_TestLevel2: []
+  _edgeSprite: {fileID: -5667742714563845051, guid: 0fe9769faecbe8a41990e0003ccb1bba, type: 3}
 --- !u!1 &1091388105
 GameObject:
   m_ObjectHideFlags: 0
