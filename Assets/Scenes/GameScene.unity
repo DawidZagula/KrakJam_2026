@@ -2947,8 +2947,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnvironmentLevelManager
   _currentEnvironmentLevel: 0
   _currentTimeToChangeLevel: 0
-  _minTimeToChangeLevel: 20
-  _maxTimeToChangeLevel: 30
+  _minTimeToChangeLevel: 4
+  _maxTimeToChangeLevel: 6
 --- !u!1 &1437985232
 GameObject:
   m_ObjectHideFlags: 0
@@ -3054,6 +3054,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9720b05e2845fb4e8db1c2205ce1080, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAnimator
+  _maxRunAnimationSpeedModifier: 2.5
+  _currentRunAnimationSpeedModifier: 1
 --- !u!95 &1437985236
 Animator:
   serializedVersion: 7
@@ -3348,7 +3350,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74d266ba433141144840d82e3268aecf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DifficultyManager
-  _speedIncreasePercent: 20
+  _speedIncreasePercent: 10
 --- !u!224 &1521813172 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1121568590070875472, guid: 610956e3f7cb2824c831f3fcc8bb0520, type: 3}

@@ -1,12 +1,29 @@
+using System;
 using UnityEngine;
 using UnityEngine.Rendering;
 
 public class DifficultyManager : MonoBehaviour
 {
-   public static DifficultyManager Instance { get; }
+    public static DifficultyManager Instance { get; private set; }
 
     [Header("Configuration")]
     [SerializeField] private float _speedIncreasePercent;
+
+    public event EventHandler<OnSpeedUpdatedEventArgs> OnSpeedUpdated;
+    public class OnSpeedUpdatedEventArgs : EventArgs
+    {
+        public float SpeedIncreasePercent { get; }
+
+        public OnSpeedUpdatedEventArgs(float speedIncreasePercent)
+        {
+            SpeedIncreasePercent = speedIncreasePercent;
+        }
+    }
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     private void Start()
     {
@@ -41,5 +58,7 @@ public class DifficultyManager : MonoBehaviour
         float oldForegroundSpeed = MovablePartsManager.Instance.GetForegroundMoveSpeed();
         float newForegroundSpeed = oldForegroundSpeed * (1f + _speedIncreasePercent / 100f);
         MovablePartsManager.Instance.SetForegroundMoveSpeed(newForegroundSpeed);
+
+        OnSpeedUpdated?.Invoke(this, new OnSpeedUpdatedEventArgs(_speedIncreasePercent));
     }
 }
