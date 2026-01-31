@@ -19,3 +19,10 @@ public enum MovableParts
     Background,
     Foreground
 }
+
+public enum EnvironmentLevel
+{
+    TestLevel0,
+    TestLevel1,
+    TestLevel2
+}
