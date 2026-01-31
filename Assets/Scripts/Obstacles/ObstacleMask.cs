@@ -4,14 +4,16 @@ public class ObstacleMask : MonoBehaviour
 {
     [SerializeField] private Mask _requiredMask;
 
-    public void TryDefeatObstacle(Mask playerCurrentMask)
+    public bool TryDefeatObstacle(Mask playerCurrentMask)
     {
         if (playerCurrentMask == _requiredMask)
         {
             Destroy(gameObject);
+            return true;
         }
         else
         {
+            return false;
             //Debug.Log("Wrong mask");
         }
     }

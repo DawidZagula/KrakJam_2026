@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
@@ -7,7 +8,10 @@ public class AudioManager : MonoBehaviour
 
     public enum AudioName
     {
-      
+      Mask_cheer_up,
+      Mask_Destroy,
+      Mask_Repair,
+      Mask_scary
     }
 
     [SerializeField] private List<AudioClip> _audioClipList = new List<AudioClip>();
@@ -46,4 +50,14 @@ public class AudioManager : MonoBehaviour
     }
 
     public void PlaySound(AudioName name) => _audioSource.PlayOneShot(_enumNameAudioClipDictionary[name]);
+
+    //Optional
+    public void StopAllSoundsAndPlayNew(AudioName name)
+    {
+        if (IsPlaying())
+        {
+            StopCurrentlyPlayedSound();
+            PlaySound(name);
+        }
+    }
 }

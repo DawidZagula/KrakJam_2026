@@ -1,3 +1,4 @@
+using NUnit.Framework.Constraints;
 using System;
 using UnityEngine;
 
@@ -12,6 +13,9 @@ public class PlayerMask : MonoBehaviour
     [SerializeField] private float _obstacleDetectionRayLength = 5f;
     [SerializeField] private LayerMask _obstacleLayer;
 
+    //run-time
+    private Collider _lastHitObstacleCollider;
+
     public event EventHandler<OnChangedMaskEventArgs> OnChangedMask;
     public class OnChangedMaskEventArgs : EventArgs
     {
@@ -22,6 +26,8 @@ public class PlayerMask : MonoBehaviour
             NewMask = newMask;
         }
     }
+
+    public event EventHandler OnDefeatedObstacle;
 
     private void Awake()
     {
@@ -47,7 +53,14 @@ public class PlayerMask : MonoBehaviour
         {
             if (hit.collider.TryGetComponent(out ObstacleMask obstacleMask))
             {
-                obstacleMask.TryDefeatObstacle(_currentMask);
+              if (_lastHitObstacleCollider == null || _lastHitObstacleCollider != hit.collider)
+                {
+                    if (obstacleMask.TryDefeatObstacle(_currentMask))
+                    {
+                        OnDefeatedObstacle?.Invoke(this, EventArgs.Empty);
+
+                    }
+                }
             }
         }
     }
@@ -60,6 +73,33 @@ public class PlayerMask : MonoBehaviour
     public void SetPlayerMask(Mask newMask)
     {
         _currentMask = newMask;
+
+        AudioManager.AudioName selectedAudioName;
+
+        switch (newMask)
+        {
+            default:
+            case Mask.Repair:
+                selectedAudioName = AudioManager.AudioName.Mask_Repair;
+                break;
+
+            case Mask.Destruction:
+                selectedAudioName = AudioManager.AudioName.Mask_Destroy;
+
+                break;
+
+            case Mask.Fright:
+                selectedAudioName = AudioManager.AudioName.Mask_scary;
+
+                break;
+
+            case Mask.Consolation:
+                selectedAudioName = AudioManager.AudioName.Mask_cheer_up;
+
+                break;
+        }
+
+        AudioManager.Instance.PlaySound(selectedAudioName);
 
         OnChangedMask?.Invoke(this, new OnChangedMaskEventArgs(newMask));
     }
