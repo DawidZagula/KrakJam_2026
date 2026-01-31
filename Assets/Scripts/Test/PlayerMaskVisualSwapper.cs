@@ -30,7 +30,7 @@ public class PlayerMaskVisualSwapper : MonoBehaviour
 
     private void PlayerMask_OnChangedMask(object sender, PlayerMask.OnChangedMaskEventArgs e)
     {
-        int swapsLeft = MaskSwapLimiter.Instance.GetCurrentMaskSwaps();
+      // int swapsLeft = MaskSwapLimiter.Instance.GetCurrentMaskSwaps();
 
         switch (e.NewMask)
         {
