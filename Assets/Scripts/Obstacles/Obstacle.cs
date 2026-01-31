@@ -36,5 +36,14 @@ public class Obstacle : MonoBehaviour
         transform.Translate(-transform.right * (_moveSpeed * Time.deltaTime));
     }
 
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.TryGetComponent(out PlayerHitReceiver playerHitReceiver))
+        {
+            playerHitReceiver.Hit();
+        }
+    }
+
     public void SetMoveSpeed(float moveSpeed) => _moveSpeed = moveSpeed;
 }

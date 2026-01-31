@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,8 +12,15 @@ public class PlayerHitReceiver : MonoBehaviour
     [Header("Configuration")]
     [SerializeField] private float _hitBackDistance;
     [SerializeField] private float _hitBackTime;
+    [Space]
+    [SerializeField] private float _immunityTimeAfterHit;
+
+    //run-time
+    private bool _isImmune = false;
 
     private Coroutine _hitBackRoutine;
+    private Coroutine _immmunityRoutine;
+
 
     private void Update()
     {
@@ -24,6 +32,7 @@ public class PlayerHitReceiver : MonoBehaviour
 
     public void Hit()
     {
+        if (_isImmune) { return; }
 
         if (_lifes == 0)
         {
@@ -32,8 +41,11 @@ public class PlayerHitReceiver : MonoBehaviour
         }
 
         if (_hitBackRoutine != null) { return; }
-
         _hitBackRoutine = StartCoroutine(HitBackRoutine());
+
+        if (_immmunityRoutine != null) { return; }
+        _immmunityRoutine = StartCoroutine(ImmunityRoutine());
+
         _lifes--;
 
     }
@@ -59,6 +71,14 @@ public class PlayerHitReceiver : MonoBehaviour
         transform.position = targetPosition;
 
         _hitBackRoutine = null;
+    }
+
+    private IEnumerator ImmunityRoutine()
+    {
+        _isImmune = true;
+        yield return new WaitForSeconds(_immunityTimeAfterHit);
+        _isImmune = false;
+        _immmunityRoutine = null;
     }
 
     private void ProcessDeath()

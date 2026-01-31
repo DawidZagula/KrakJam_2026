@@ -8,7 +8,7 @@ public class ObstacleMask : MonoBehaviour
     {
         if (playerCurrentMask == _requiredMask)
         {
-            //Debug.Log("Defeat");
+            Destroy(gameObject);
         }
         else
         {
