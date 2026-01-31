@@ -8,11 +8,11 @@ public class ObstacleMask : MonoBehaviour
     {
         if (playerCurrentMask == _requiredMask)
         {
-            Debug.Log("Defeat");
+            //Debug.Log("Defeat");
         }
         else
         {
-            Debug.Log("Wrong mask");
+            //Debug.Log("Wrong mask");
         }
     }
 

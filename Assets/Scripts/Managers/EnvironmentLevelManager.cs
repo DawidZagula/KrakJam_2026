@@ -1,9 +1,12 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class EnvironmentLevelManager : MonoBehaviour
 {
+    public static EnvironmentLevelManager Instance {  get; private set; }
+    
     [Header("Debugging Only")]
     [SerializeField] private EnvironmentLevel _currentEnvironmentLevel;
     [SerializeField] private float _currentTimeToChangeLevel;
@@ -14,12 +17,54 @@ public class EnvironmentLevelManager : MonoBehaviour
 
     private Coroutine _countdownToChangeLevelRoutine;
 
+    public event EventHandler<OnLevelChangedEventArgs> OnLevelChanged;
+    public class OnLevelChangedEventArgs : EventArgs
+    {
+        public EnvironmentLevel NewEnvironmentLevel { get; private set; }
+
+        public OnLevelChangedEventArgs(EnvironmentLevel environmentLevel)
+        {
+            NewEnvironmentLevel = environmentLevel;
+        }
+    }
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     private void Update()
     {
         if (Keyboard.current.spaceKey.wasPressedThisFrame)
         {
-            SelectRandomNextLevel();
+            ProcessStartNextLevel();
         }
+    }
+
+    private void ProcessStartNextLevel()
+    {
+        if (_countdownToChangeLevelRoutine == null)
+        {
+            SetNewTimeToChangeLevel();
+            _countdownToChangeLevelRoutine = StartCoroutine(CountdownToChangeLevelRoutine());
+        }
+    }
+
+    private void SetNewTimeToChangeLevel()
+    {
+        _currentTimeToChangeLevel = UnityEngine.Random.Range(_minTimeToChangeLevel, _maxTimeToChangeLevel);
+    }
+
+    private IEnumerator CountdownToChangeLevelRoutine()
+    {
+        yield return new WaitForSeconds(_currentTimeToChangeLevel);
+        SelectRandomNextLevel();
+
+        OnLevelChanged?.Invoke(this, new OnLevelChangedEventArgs(_currentEnvironmentLevel));
+
+        _countdownToChangeLevelRoutine = null;
+
+       // ProcessStartNextLevel();
     }
 
     private void SelectRandomNextLevel()
@@ -34,14 +79,7 @@ public class EnvironmentLevelManager : MonoBehaviour
             newEnvironmentLevel = (EnvironmentLevel)Enum.GetValues(typeof(EnvironmentLevel)).GetValue(randomLevelIndex);
 
             _currentEnvironmentLevel = newEnvironmentLevel;
-            Debug.Log(newEnvironmentLevel);
-
         }
     }
 
-
-    private void SetNewTimeToChangeLevel()
-    {
-        _currentTimeToChangeLevel = UnityEngine.Random.Range(_minTimeToChangeLevel, _maxTimeToChangeLevel);
-    }
 }
