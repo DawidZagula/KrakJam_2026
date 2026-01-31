@@ -1133,7 +1133,7 @@ MonoBehaviour:
   _movablePartsParent: {fileID: 428230853}
   _movablePartObjectPrefab: {fileID: 2262455909082620037, guid: c5bbfa4dc7eb79d4b93414fb52bc5078, type: 3}
   _numberOfPartsAtStart: 10
-  _floorPartLength: 20
+  _floorPartLength: 10
   _backgroundPartLength: 0
   _floorMoveSpeed: 3
   _foregroundMoveSpeed: 0
@@ -1674,7 +1674,7 @@ MonoBehaviour:
   _audioClipList:
   - {fileID: 8300000, guid: 8b25f66f8a114774e8e941af79dba422, type: 3}
   - {fileID: 8300000, guid: 0c026d6d7c646414f979d6bf8419efe1, type: 3}
-  - {fileID: 8300000, guid: 1e51880f1362f6f44bf950cfc1840ccb, type: 3}
+  - {fileID: 8300000, guid: 3692c1d5e1fff68499bd48c4e0307436, type: 3}
   - {fileID: 8300000, guid: 194b23741a0aab14997b3006b4436748, type: 3}
 --- !u!82 &659735771
 AudioSource:
@@ -1818,24 +1818,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MovablePartVisualsRepository
   _floorPartSprites_TestLevel0_0:
-  - {fileID: 21300000, guid: ca6b8d311a1e08e48b6cbebaf3f8bd75, type: 3}
+  - {fileID: 21300000, guid: 34c5ed685cd96294e99fe0985685b613, type: 3}
   _floorPartSprites_TestLevel0_1:
-  - {fileID: 21300000, guid: ca6b8d311a1e08e48b6cbebaf3f8bd75, type: 3}
+  - {fileID: 21300000, guid: 07209089b6dbcab4ba0f24717629d8d8, type: 3}
   _backroundPartSprites_TestLevel0: []
   _foregroundPartSprites_TestLevel0: []
   _floorPartSprites_TestLevel1_0:
-  - {fileID: 21300000, guid: ca6b8d311a1e08e48b6cbebaf3f8bd75, type: 3}
+  - {fileID: 21300000, guid: e5393eeebe850b64fab58eb283df050e, type: 3}
   _floorPartSprites_TestLevel1_1:
-  - {fileID: 21300000, guid: ca6b8d311a1e08e48b6cbebaf3f8bd75, type: 3}
+  - {fileID: 21300000, guid: 1d5edeea9aa686444a7ad0a2748b2d2f, type: 3}
   _backroundPartSprites_TestLevel1: []
   _foregroundPartSprites_TestLevel1: []
   _floorPartSprites_TestLevel2_0:
-  - {fileID: 21300000, guid: ca6b8d311a1e08e48b6cbebaf3f8bd75, type: 3}
+  - {fileID: 21300000, guid: 56ff4a53eed5a51488dea185f054a7f1, type: 3}
   _floorPartSprites_TestLevel2_1:
-  - {fileID: 21300000, guid: ca6b8d311a1e08e48b6cbebaf3f8bd75, type: 3}
+  - {fileID: 21300000, guid: 5efc5ad1dfb9ed447b3ebcb72d4abf49, type: 3}
   _backroundPartSprites_TestLevel2: []
   _foregroundPartSprites_TestLevel2: []
-  _edgeSprite: {fileID: 21300000, guid: ca6b8d311a1e08e48b6cbebaf3f8bd75, type: 3}
+  _edgeSprite: {fileID: -5899927303015767666, guid: 4a5c8dac820495a4e9dad5e7c6d4fea5, type: 3}
 --- !u!1 &765829372
 GameObject:
   m_ObjectHideFlags: 0
@@ -2149,9 +2149,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2372978690712091808, guid: c5bbfa4dc7eb79d4b93414fb52bc5078, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 34c5ed685cd96294e99fe0985685b613, type: 3}
     - target: {fileID: 8919452690059921503, guid: c5bbfa4dc7eb79d4b93414fb52bc5078, type: 3}
       propertyPath: m_Name
       value: MovablePartObject
+      objectReference: {fileID: 0}
+    - target: {fileID: 8919452690059921503, guid: c5bbfa4dc7eb79d4b93414fb52bc5078, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3300,8 +3308,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnvironmentLevelManager
   _currentEnvironmentLevel: 0
   _currentTimeToChangeLevel: 0
-  _minTimeToChangeLevel: 4
-  _maxTimeToChangeLevel: 6
+  _minTimeToChangeLevel: 10
+  _maxTimeToChangeLevel: 20
 --- !u!1 &1437985232
 GameObject:
   m_ObjectHideFlags: 0
@@ -4918,7 +4926,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4685151864040769593, guid: cd734b44472262b4aa80eb00a1b42bdc, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6325095801457869708, guid: cd734b44472262b4aa80eb00a1b42bdc, type: 3}
       propertyPath: m_Pivot.x

@@ -126,7 +126,8 @@ public class MovablePartsManager : MonoBehaviour
         float spawnXOffset;
         if (_spawnedFloorParts.Count == 0)
         {
-            spawnXOffset = 0f;
+            //spawnXOffset = 0f;
+            spawnXOffset = -20f;
         }
         else
         {
@@ -152,7 +153,7 @@ public class MovablePartsManager : MonoBehaviour
             Transform spawnedFloorPartInstance = listOfObjectsToMove[i];
             spawnedFloorPartInstance.Translate(-transform.right * (moveSpeed * Time.deltaTime));
 
-            if (spawnedFloorPartInstance.position.x <= Camera.main.transform.position.x - _floorPartLength)
+            if (spawnedFloorPartInstance.position.x <= Camera.main.transform.position.x - 3 * _floorPartLength)
             {
                 listOfObjectsToMove.Remove(spawnedFloorPartInstance);
                 Destroy(spawnedFloorPartInstance.gameObject);
