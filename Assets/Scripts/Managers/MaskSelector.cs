@@ -36,6 +36,13 @@ public class MaskSelector : MonoBehaviour
 
     private void SelectActiveMask_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
+        if (MaskSwapLimiter.Instance.GetCurrentMaskSwaps() == 0 ||
+            GameStateManager.Instance.GetCurrentGameState() != GameState.Playing)
+        {
+            //POSSIBLY: implement some visual indication there is no more swaps left
+            return;
+        }
+
         int choosenIndex = (int)obj.ReadValue<float>() - 1;
 
         DeselectAllSlots();
@@ -45,6 +52,13 @@ public class MaskSelector : MonoBehaviour
 
     private void ToggleActiveMask_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
+        if (MaskSwapLimiter.Instance.GetCurrentMaskSwaps() == 0 ||
+            GameStateManager.Instance.GetCurrentGameState() != GameState.Playing)
+        {
+            //POSSIBLY: implement some visual indication there is no more swaps left
+            return;
+        }
+
         int direction = (int)obj.ReadValue<float>();
 
         int choosenIndex = _activeSlotIndexNumber + direction;

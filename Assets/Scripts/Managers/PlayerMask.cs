@@ -12,6 +12,9 @@ public class PlayerMask : MonoBehaviour
     [SerializeField] private float _obstacleDetectionRayLength = 5f;
     [SerializeField] private LayerMask _obstacleLayer;
 
+    //run-time
+    private Collider _lastHitObstacleCollider;
+
     public event EventHandler<OnChangedMaskEventArgs> OnChangedMask;
     public class OnChangedMaskEventArgs : EventArgs
     {
@@ -22,6 +25,8 @@ public class PlayerMask : MonoBehaviour
             NewMask = newMask;
         }
     }
+
+    public event EventHandler OnDefeatedObstacle;
 
     private void Awake()
     {
@@ -47,7 +52,14 @@ public class PlayerMask : MonoBehaviour
         {
             if (hit.collider.TryGetComponent(out ObstacleMask obstacleMask))
             {
-                obstacleMask.TryDefeatObstacle(_currentMask);
+              if (_lastHitObstacleCollider == null || _lastHitObstacleCollider != hit.collider)
+                {
+                    if (obstacleMask.TryDefeatObstacle(_currentMask))
+                    {
+                        OnDefeatedObstacle?.Invoke(this, EventArgs.Empty);
+
+                    }
+                }
             }
         }
     }
