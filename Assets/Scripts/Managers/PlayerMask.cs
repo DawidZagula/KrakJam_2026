@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerMask : MonoBehaviour
@@ -10,6 +11,17 @@ public class PlayerMask : MonoBehaviour
     [Header("Configuration - Obstacle Detection")]
     [SerializeField] private float _obstacleDetectionRayLength = 5f;
     [SerializeField] private LayerMask _obstacleLayer;
+
+    public event EventHandler<OnChangedMaskEventArgs> OnChangedMask;
+    public class OnChangedMaskEventArgs : EventArgs
+    {
+        public Mask NewMask { get; }
+
+        public OnChangedMaskEventArgs(Mask newMask)
+        {
+            NewMask = newMask;
+        }
+    }
 
     private void Awake()
     {
@@ -48,6 +60,8 @@ public class PlayerMask : MonoBehaviour
     public void SetPlayerMask(Mask newMask)
     {
         _currentMask = newMask;
+
+        OnChangedMask?.Invoke(this, new OnChangedMaskEventArgs(newMask));
     }
 
     private void OnDrawGizmos()

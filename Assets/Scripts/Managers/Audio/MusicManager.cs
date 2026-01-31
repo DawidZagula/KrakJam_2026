@@ -37,10 +37,12 @@ public class MusicManager : MonoBehaviour
 
         _audioSource = GetComponent<AudioSource>();
 
-        foreach (AudioName audioName in System.Enum.GetValues(typeof(AudioName)))
-        {
-            _enumNameAudioClipDictionary[audioName] = _audioClipList[(int)audioName];
-        }
+        // TO UNCOMMENT, WHEN WE HAVE MUSIC
+
+        //foreach (AudioName audioName in System.Enum.GetValues(typeof(AudioName)))
+        //{
+        //    _enumNameAudioClipDictionary[audioName] = _audioClipList[(int)audioName];
+        //}
 
     }
 
@@ -48,12 +50,12 @@ public class MusicManager : MonoBehaviour
     {
         if (arg0.buildIndex == 0)
         {
-            PlayMusic(AudioName.Menu);
+          //  PlayMusic(AudioName.Menu);
 
         }
         else if (arg0.buildIndex == 1)
         {
-            PlayMusic(AudioName.MainGame);
+          //  PlayMusic(AudioName.MainGame);
         }
     }
 
