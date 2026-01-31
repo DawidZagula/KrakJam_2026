@@ -289,7 +289,7 @@ GameObject:
   m_Component:
   - component: {fileID: 428230853}
   m_Layer: 0
-  m_Name: FloorPartsParent
+  m_Name: MovablePartsParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -321,7 +321,7 @@ GameObject:
   - component: {fileID: 518036645}
   - component: {fileID: 518036646}
   m_Layer: 0
-  m_Name: FloorLayerManager
+  m_Name: MovablePartsManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -354,7 +354,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57df950e5ba5e6043b2cde25a1bd043f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FloorLayerManager
-  _floorPartsParent: {fileID: 428230853}
+  _movablePartsParent: {fileID: 428230853}
   _movablePartObjectPrefab: {fileID: 2262455909082620037, guid: c5bbfa4dc7eb79d4b93414fb52bc5078, type: 3}
   _numberOfPartsAtStart: 10
   _floorPartLength: 12
@@ -1317,6 +1317,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1492190229}
+  - component: {fileID: 1492190230}
   m_Layer: 0
   m_Name: DifficultyManager
   m_TagString: Untagged
@@ -1339,6 +1340,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1823504478}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1492190230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1492190228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74d266ba433141144840d82e3268aecf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DifficultyManager
+  _speedIncreasePercent: 20
 --- !u!224 &1521813172 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1121568590070875472, guid: 610956e3f7cb2824c831f3fcc8bb0520, type: 3}

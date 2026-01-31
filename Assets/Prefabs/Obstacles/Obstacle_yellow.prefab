@@ -152,6 +152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Obstacle
   _moveSpeed: 0
+  _timeToSelfDestruct: 30
 --- !u!61 &6893868394063445479
 BoxCollider2D:
   m_ObjectHideFlags: 0

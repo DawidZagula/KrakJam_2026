@@ -64,7 +64,7 @@ public class EnvironmentLevelManager : MonoBehaviour
 
         _countdownToChangeLevelRoutine = null;
 
-       // ProcessStartNextLevel();
+        ProcessStartNextLevel();
     }
 
     private void SelectRandomNextLevel()

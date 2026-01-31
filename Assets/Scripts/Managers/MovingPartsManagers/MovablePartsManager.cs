@@ -2,10 +2,12 @@ using System.Collections.Generic;
 using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
-public class FloorLayerManager : MonoBehaviour
+public class MovablePartsManager : MonoBehaviour
 {
+    public static MovablePartsManager Instance { get; private set; }
+    
     [Header("Cached References")]
-    [SerializeField] private Transform _floorPartsParent;
+    [SerializeField] private Transform _movablePartsParent;
 
     [SerializeField] private Transform _movablePartObjectPrefab;
    // [SerializeField] private Transform _foregroundPartPrefab;
@@ -27,6 +29,11 @@ public class FloorLayerManager : MonoBehaviour
     [SerializeField] private float _maximumForegroundXOffset;
 
     private List<Transform> _spawnedFloorParts = new List<Transform>();
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     private void Start()
     {
@@ -53,7 +60,7 @@ public class FloorLayerManager : MonoBehaviour
         Vector3 spawmPosition = new Vector3(spawnXOffset, 0, 0);
 
         Transform spawnFloorPartInstance =
-             Instantiate(_movablePartObjectPrefab, spawmPosition, transform.rotation, _floorPartsParent);
+             Instantiate(_movablePartObjectPrefab, spawmPosition, transform.rotation, _movablePartsParent);
 
         _spawnedFloorParts.Add(spawnFloorPartInstance);
 
