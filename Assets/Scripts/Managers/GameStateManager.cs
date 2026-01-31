@@ -32,4 +32,6 @@ public class GameStateManager : MonoBehaviour
 
         OnGameStateChanged?.Invoke(this, new OnGameStateChangedEventArgs(newGameState));
     }
+
+    public GameState GetCurrentGameState() => _currentGameState;
 }
