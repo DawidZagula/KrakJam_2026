@@ -28,6 +28,13 @@ public class MaskSelector : MonoBehaviour
         _playerInputActions.Inventory.SelectActiveMask.performed += SelectActiveMask_performed;
     }
 
+    private void OnDisable()
+    {
+        _playerInputActions.Inventory.ToggleActiveMask.performed += ToggleActiveMask_performed;
+        _playerInputActions.Inventory.SelectActiveMask.performed += SelectActiveMask_performed;
+        _playerInputActions.Inventory.Disable();
+    }
+
     private void SelectActiveMask_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
         int choosenIndex = (int)obj.ReadValue<float>() - 1;

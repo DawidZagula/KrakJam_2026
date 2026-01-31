@@ -83,6 +83,7 @@ public class PlayerHitReceiver : MonoBehaviour
 
     private void ProcessDeath()
     {
-        Debug.Log("Player Died");
+        //Entire process, when we have animation
+        GameStateManager.Instance.ChangeCurrentGameState(GameState.GameOver);
     }
 }

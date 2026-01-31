@@ -9,16 +9,27 @@ public class Obstacle : MonoBehaviour
     [Header("Configuration")]
     [SerializeField] private float _timeToSelfDestruct;
 
+    //run-time
+    private bool _shouldMove = true;
+
     private void Start()
     {
         ObstacleSpawner.Instance.OnSpeedUpdated += ObstacleSpawner_OnSpeedUpdated;
+        GameStateManager.Instance.OnGameStateChanged += GameStateManager_OnGameStateChanged;
 
         Destroy(gameObject, _timeToSelfDestruct);
+    }
+
+    private void GameStateManager_OnGameStateChanged(object sender, GameStateManager.OnGameStateChangedEventArgs e)
+    {
+        _shouldMove = !(e.NewGameState == GameState.GameOver);
+        
     }
 
     private void OnDestroy()
     {
         ObstacleSpawner.Instance.OnSpeedUpdated -= ObstacleSpawner_OnSpeedUpdated;
+        GameStateManager.Instance.OnGameStateChanged -= GameStateManager_OnGameStateChanged;
     }
 
     private void ObstacleSpawner_OnSpeedUpdated(object sender, ObstacleSpawner.OnSpeedUpdatedEventArgs e)
@@ -28,6 +39,8 @@ public class Obstacle : MonoBehaviour
 
     private void Update()
     {
+        if (!_shouldMove) { return; }
+
         Move();
     }
 
