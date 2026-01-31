@@ -6,23 +6,31 @@ public class MovablePartVisualsRepository : MonoBehaviour
     public static MovablePartVisualsRepository Instance { get; private set; }
 
     [Header("Configuration")]
-    [SerializeField] private Sprite[] _floorPartSprites_TestLevel0;
+    [SerializeField] private Sprite[] _floorPartSprites_TestLevel0_0;
+    [SerializeField] private Sprite[] _floorPartSprites_TestLevel0_1;
     [SerializeField] private Sprite[] _backroundPartSprites_TestLevel0;
     [SerializeField] private Sprite[] _foregroundPartSprites_TestLevel0;
     [Space]
-    [SerializeField] private Sprite[] _floorPartSprites_TestLevel1;
+    [SerializeField] private Sprite[] _floorPartSprites_TestLevel1_0;
+    [SerializeField] private Sprite[] _floorPartSprites_TestLevel1_1;
     [SerializeField] private Sprite[] _backroundPartSprites_TestLevel1;
     [SerializeField] private Sprite[] _foregroundPartSprites_TestLevel1;
     [Space]
-    [SerializeField] private Sprite[] _floorPartSprites_TestLevel2;
+    [SerializeField] private Sprite[] _floorPartSprites_TestLevel2_0;
+    [SerializeField] private Sprite[] _floorPartSprites_TestLevel2_1;
     [SerializeField] private Sprite[] _backroundPartSprites_TestLevel2;
     [SerializeField] private Sprite[] _foregroundPartSprites_TestLevel2;
     [Space]
     [SerializeField] private Sprite _edgeSprite;
 
-    private readonly List<Sprite> _currentLevelFloorPartSprites = new List<Sprite>();
+    //run-time
+
+    private readonly List<Sprite> _currentLevelFloorPartSprites_0 = new List<Sprite>();
+    private readonly List<Sprite> _currentLevelFloorPartSprites_1 = new List<Sprite>();
     private readonly List<Sprite> _currentLevelBackgroundSprites = new List<Sprite>();
     private readonly List<Sprite> _currentLevelForegroundSprites = new List<Sprite>();
+
+    private bool _takeFloorPartsFromList_0 = true;
 
     private void Awake()
     {
@@ -49,7 +57,8 @@ public class MovablePartVisualsRepository : MonoBehaviour
 
     private void UpdateCurrentSpriteLists(EnvironmentLevel currentEnvironmentLevel)
     {
-        _currentLevelFloorPartSprites.Clear();
+        _currentLevelFloorPartSprites_0.Clear();
+        _currentLevelFloorPartSprites_1.Clear();
         _currentLevelBackgroundSprites.Clear();
         _currentLevelForegroundSprites.Clear();
 
@@ -58,10 +67,15 @@ public class MovablePartVisualsRepository : MonoBehaviour
             default:
             case EnvironmentLevel.TestLevel0:
 
-                foreach (Sprite floorSprite in _floorPartSprites_TestLevel0)
+                foreach (Sprite floorSprite in _floorPartSprites_TestLevel0_0)
                 {
-                    _currentLevelFloorPartSprites.Add(floorSprite);
+                    _currentLevelFloorPartSprites_0.Add(floorSprite);
                 }
+                foreach (Sprite floorSprite in _floorPartSprites_TestLevel0_1)
+                {
+                    _currentLevelFloorPartSprites_1.Add(floorSprite);
+                }
+
                 foreach (Sprite backgroundSprite  in _backroundPartSprites_TestLevel0)
                 {
                     _currentLevelBackgroundSprites.Add(backgroundSprite);
@@ -74,10 +88,15 @@ public class MovablePartVisualsRepository : MonoBehaviour
                 break;
 
             case EnvironmentLevel.TestLevel1:
-                foreach (Sprite floorSprite in _floorPartSprites_TestLevel1)
+                foreach (Sprite floorSprite in _floorPartSprites_TestLevel1_0)
                 {
-                    _currentLevelFloorPartSprites.Add(floorSprite);
+                    _currentLevelFloorPartSprites_0.Add(floorSprite);
                 }
+                foreach (Sprite floorSprite in _floorPartSprites_TestLevel1_1)
+                {
+                    _currentLevelFloorPartSprites_1.Add(floorSprite);
+                }
+
                 foreach (Sprite backgroundSprite in _backroundPartSprites_TestLevel1)
                 {
                     _currentLevelBackgroundSprites.Add(backgroundSprite);
@@ -91,10 +110,15 @@ public class MovablePartVisualsRepository : MonoBehaviour
                 break;
 
             case EnvironmentLevel.TestLevel2:
-                foreach (Sprite floorSprite in _floorPartSprites_TestLevel2)
+                foreach (Sprite floorSprite in _floorPartSprites_TestLevel2_0)
                 {
-                    _currentLevelFloorPartSprites.Add(floorSprite);
+                    _currentLevelFloorPartSprites_0.Add(floorSprite);
                 }
+                foreach (Sprite floorSprite in _floorPartSprites_TestLevel2_1)
+                {
+                    _currentLevelFloorPartSprites_1.Add(floorSprite);
+                }
+
                 foreach (Sprite backgroundSprite in _backroundPartSprites_TestLevel2)
                 {
                     _currentLevelBackgroundSprites.Add(backgroundSprite);
@@ -117,8 +141,14 @@ public class MovablePartVisualsRepository : MonoBehaviour
         {
             default:
             case MovableParts.Floor:
-                randomIndex = Random.Range(0, _currentLevelFloorPartSprites.Count);
-                return _currentLevelFloorPartSprites[randomIndex];
+
+                randomIndex = _takeFloorPartsFromList_0 ?
+                    Random.Range(0, _currentLevelFloorPartSprites_0.Count) :
+                    Random.Range(0, _currentLevelFloorPartSprites_1.Count);
+
+                _takeFloorPartsFromList_0 = !_takeFloorPartsFromList_0;
+
+                return _currentLevelFloorPartSprites_0[randomIndex];
 
             case MovableParts.Background:
                 randomIndex = Random.Range(0, _currentLevelBackgroundSprites.Count);
