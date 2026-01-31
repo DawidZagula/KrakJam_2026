@@ -1,5 +1,7 @@
 using System;
+using System.Collections;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MaskSwapLimiter : MonoBehaviour
@@ -8,13 +10,19 @@ public class MaskSwapLimiter : MonoBehaviour
     
     [Header("Cache References")]
     [SerializeField] private TextMeshProUGUI _swapsCountText;
-
+    [Space]
     [Header("Configuration")]
     [SerializeField] private int _maxMaskSwaps;
-
+    [Space]
+    [Header("Configuration - Normal Difficulty Only")]
+    [SerializeField] private float _swapReplenishmentDuration;
+    [Space]
     [Header("Debugging Only")]
     [SerializeField] private int _currentMaskSwaps;
+    [SerializeField] private bool _shouldReplenishFirstSwap;
 
+    // run-time 
+    private Coroutine _replenishSwapRoutine;
 
     private void Awake()
     {
@@ -28,6 +36,9 @@ public class MaskSwapLimiter : MonoBehaviour
     {
         PlayerMask.Instance.OnChangedMask += PlayerMask_OnChangedMask;
         PlayerMask.Instance.OnDefeatedObstacle += PlayerMask_OnDefeatedObstacle;
+
+        _shouldReplenishFirstSwap = ChosenDifficultyManager.Instance.GetSelectedDifficulty() 
+            == ChosenDifficultyManager.GlobalDiffulty.Normal;
     }
 
 
@@ -60,6 +71,26 @@ public class MaskSwapLimiter : MonoBehaviour
             _currentMaskSwaps--;
             UpdateSwapsCountText();
         }
+
+        if (_currentMaskSwaps == 0 && _shouldReplenishFirstSwap)
+        {
+            if (_replenishSwapRoutine != null) { return; }
+
+            _replenishSwapRoutine = StartCoroutine(ReplenishSwapRoutine());
+        }
+
+    }
+
+    private IEnumerator ReplenishSwapRoutine()
+    {
+        yield return new WaitForSeconds(_swapReplenishmentDuration);
+        
+        if (_currentMaskSwaps == 0)
+        {
+            _currentMaskSwaps++;
+            UpdateSwapsCountText();
+        }
+        _replenishSwapRoutine = null;
     }
 
     private void TryIncreaseSwaps()

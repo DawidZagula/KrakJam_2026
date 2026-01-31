@@ -1855,7 +1855,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MaskSwapLimiter
   _swapsCountText: {fileID: 225010417}
   _maxMaskSwaps: 3
+  _swapReplenishmentDuration: 3
   _currentMaskSwaps: 0
+  _shouldReplenishFirstSwap: 0
 --- !u!1 &1091388105
 GameObject:
   m_ObjectHideFlags: 0
