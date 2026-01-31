@@ -38,6 +38,18 @@ public class MovablePartsManager : MonoBehaviour
     private void Start()
     {
         InstantiateStartParts();
+
+        EnvironmentLevelManager.Instance.OnLevelChanged += EnvironmentLevelManager_OnLevelChanged;
+    }
+
+    private void OnDestroy()
+    {
+        EnvironmentLevelManager.Instance.OnLevelChanged -= EnvironmentLevelManager_OnLevelChanged;
+    }
+
+    private void EnvironmentLevelManager_OnLevelChanged(object sender, EnvironmentLevelManager.OnLevelChangedEventArgs e)
+    {
+        
     }
 
     private void Update()
