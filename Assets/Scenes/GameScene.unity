@@ -1540,15 +1540,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a411755be503fba43bcc52299f395c9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MovablePartVisualsRepository
-  _floorPartSprites_TestLevel0:
+  _floorPartSprites_TestLevel0_0:
+  - {fileID: 21300000, guid: ca6b8d311a1e08e48b6cbebaf3f8bd75, type: 3}
+  _floorPartSprites_TestLevel0_1:
   - {fileID: 21300000, guid: ca6b8d311a1e08e48b6cbebaf3f8bd75, type: 3}
   _backroundPartSprites_TestLevel0: []
   _foregroundPartSprites_TestLevel0: []
-  _floorPartSprites_TestLevel1:
+  _floorPartSprites_TestLevel1_0:
+  - {fileID: 21300000, guid: ca6b8d311a1e08e48b6cbebaf3f8bd75, type: 3}
+  _floorPartSprites_TestLevel1_1:
   - {fileID: 21300000, guid: ca6b8d311a1e08e48b6cbebaf3f8bd75, type: 3}
   _backroundPartSprites_TestLevel1: []
   _foregroundPartSprites_TestLevel1: []
-  _floorPartSprites_TestLevel2:
+  _floorPartSprites_TestLevel2_0:
+  - {fileID: 21300000, guid: ca6b8d311a1e08e48b6cbebaf3f8bd75, type: 3}
+  _floorPartSprites_TestLevel2_1:
   - {fileID: 21300000, guid: ca6b8d311a1e08e48b6cbebaf3f8bd75, type: 3}
   _backroundPartSprites_TestLevel2: []
   _foregroundPartSprites_TestLevel2: []
