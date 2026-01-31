@@ -10,6 +10,7 @@ public class GameOverStateManager : MonoBehaviour
     [SerializeField] private Button _restartButton;
     [SerializeField] private Button _bactToMenuButton;
     [SerializeField] private TMP_Text finalScoreValue;
+    [SerializeField] private TextMeshProUGUI _selectedDifficultyText;
 
     private void Start()
     {
@@ -24,6 +25,10 @@ public class GameOverStateManager : MonoBehaviour
         {
             SceneLoader.Instance.ProcessLoadScene(Scenes.MainMenu, true);
         });
+
+        _selectedDifficultyText.text =
+            (ChosenDifficultyManager.Instance.GetSelectedDifficulty() == ChosenDifficultyManager.GlobalDiffulty.Normal) 
+            ? "NORMAL" : "HARD";
     }
 
     private void OnDestroy()
