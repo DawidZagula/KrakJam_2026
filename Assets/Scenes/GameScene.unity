@@ -444,7 +444,7 @@ Transform:
   m_GameObject: {fileID: 324912046}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2, y: -2, z: 0}
+  m_LocalPosition: {x: -2, y: -4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -748,7 +748,7 @@ MonoBehaviour:
   _movablePartsParent: {fileID: 428230853}
   _movablePartObjectPrefab: {fileID: 2262455909082620037, guid: c5bbfa4dc7eb79d4b93414fb52bc5078, type: 3}
   _numberOfPartsAtStart: 10
-  _floorPartLength: 12
+  _floorPartLength: 20
   _backgroundPartLength: 0
   _floorMoveSpeed: 3
   _foregroundMoveSpeed: 0
@@ -1209,6 +1209,67 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &628884149
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2262455909082620037, guid: c5bbfa4dc7eb79d4b93414fb52bc5078, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2262455909082620037, guid: c5bbfa4dc7eb79d4b93414fb52bc5078, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2262455909082620037, guid: c5bbfa4dc7eb79d4b93414fb52bc5078, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2262455909082620037, guid: c5bbfa4dc7eb79d4b93414fb52bc5078, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2262455909082620037, guid: c5bbfa4dc7eb79d4b93414fb52bc5078, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2262455909082620037, guid: c5bbfa4dc7eb79d4b93414fb52bc5078, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2262455909082620037, guid: c5bbfa4dc7eb79d4b93414fb52bc5078, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2262455909082620037, guid: c5bbfa4dc7eb79d4b93414fb52bc5078, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2262455909082620037, guid: c5bbfa4dc7eb79d4b93414fb52bc5078, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2262455909082620037, guid: c5bbfa4dc7eb79d4b93414fb52bc5078, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8919452690059921503, guid: c5bbfa4dc7eb79d4b93414fb52bc5078, type: 3}
+      propertyPath: m_Name
+      value: MovablePartObject
+      objectReference: {fileID: 0}
+    - target: {fileID: 8919452690059921503, guid: c5bbfa4dc7eb79d4b93414fb52bc5078, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c5bbfa4dc7eb79d4b93414fb52bc5078, type: 3}
 --- !u!1 &659735768
 GameObject:
   m_ObjectHideFlags: 0
@@ -1312,15 +1373,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MovablePartVisualsRepository
   _floorPartSprites_TestLevel0:
-  - {fileID: 21300000, guid: 6b66f721112b4ee4ba0732444983f7e5, type: 3}
+  - {fileID: 21300000, guid: ca6b8d311a1e08e48b6cbebaf3f8bd75, type: 3}
   _backroundPartSprites_TestLevel0: []
   _foregroundPartSprites_TestLevel0: []
   _floorPartSprites_TestLevel1:
-  - {fileID: 21300000, guid: 6b66f721112b4ee4ba0732444983f7e5, type: 3}
+  - {fileID: 21300000, guid: ca6b8d311a1e08e48b6cbebaf3f8bd75, type: 3}
   _backroundPartSprites_TestLevel1: []
   _foregroundPartSprites_TestLevel1: []
   _floorPartSprites_TestLevel2:
-  - {fileID: 21300000, guid: 6b66f721112b4ee4ba0732444983f7e5, type: 3}
+  - {fileID: 21300000, guid: ca6b8d311a1e08e48b6cbebaf3f8bd75, type: 3}
   _backroundPartSprites_TestLevel2: []
   _foregroundPartSprites_TestLevel2: []
   _edgeSprite: {fileID: -5667742714563845051, guid: 0fe9769faecbe8a41990e0003ccb1bba, type: 3}
@@ -1907,7 +1968,7 @@ Transform:
   m_GameObject: {fileID: 1349957530}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8, y: -2, z: 0}
+  m_LocalPosition: {x: -8, y: -4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2963,7 +3024,7 @@ Transform:
   m_GameObject: {fileID: 1638448959}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15, y: -2, z: 0}
+  m_LocalPosition: {x: 15, y: -4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3286,6 +3347,7 @@ Transform:
   - {fileID: 16239883}
   - {fileID: 1250294067}
   - {fileID: 1748757584}
+  - {fileID: 351193168}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1849107579
@@ -3685,7 +3747,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4685151864040769593, guid: cd734b44472262b4aa80eb00a1b42bdc, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6325095801457869708, guid: cd734b44472262b4aa80eb00a1b42bdc, type: 3}
       propertyPath: m_Pivot.x
@@ -4284,3 +4346,4 @@ SceneRoots:
   - {fileID: 1091388106}
   - {fileID: 763173831}
   - {fileID: 438346102}
+  - {fileID: 628884149}
