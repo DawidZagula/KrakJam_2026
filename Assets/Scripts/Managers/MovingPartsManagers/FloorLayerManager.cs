@@ -16,11 +16,15 @@ public class FloorLayerManager : MonoBehaviour
 
     [SerializeField] private float _floorPartLength;
     [SerializeField] private float _backgroundPartLength;
-    [SerializeField] private float _foregroundPartLength;
+    //[SerializeField] private float _foregroundPartLength;
 
     [SerializeField] private float _floorMoveSpeed;
     [SerializeField] private float _foregroundMoveSpeed;
     [SerializeField] private float _backgroundMoveSpeed;
+
+    [Header("Configuration: Foreground Specific")]
+    [SerializeField] private float _minimumForegroundXOffset;
+    [SerializeField] private float _maximumForegroundXOffset;
 
     private List<Transform> _spawnedFloorParts = new List<Transform>();
 
@@ -44,7 +48,7 @@ public class FloorLayerManager : MonoBehaviour
 
     private void SpawnPartInstance(MovableParts movablePartType)
     {
-        float spawnXOffset = GetSpawnXOffset();
+        float spawnXOffset = GetSpawnXOffset(movablePartType);
 
         Vector3 spawmPosition = new Vector3(spawnXOffset, 0, 0);
 
@@ -56,7 +60,7 @@ public class FloorLayerManager : MonoBehaviour
         spawnFloorPartInstance.GetComponent<MovablePartObject>().SetRandomSprite(movablePartType);
     }
 
-    private float GetSpawnXOffset()
+    private float GetSpawnXOffset(MovableParts movablePartType)
     {
         float spawnXOffset;
         if (_spawnedFloorParts.Count == 0)
@@ -65,8 +69,14 @@ public class FloorLayerManager : MonoBehaviour
         }
         else
         {
-            //spawnXOffset = _floorPartLength * i;
-            spawnXOffset = _spawnedFloorParts[_spawnedFloorParts.Count - 1].transform.position.x + _floorPartLength;
+            if (movablePartType == MovableParts.Foreground)
+            {
+                spawnXOffset = Random.Range(_minimumForegroundXOffset, _maximumForegroundXOffset);
+            }
+            else
+            {
+                spawnXOffset = _spawnedFloorParts[_spawnedFloorParts.Count - 1].transform.position.x + _floorPartLength;
+            }
         }
 
         return spawnXOffset;
