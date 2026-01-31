@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+
 
 public class GameOverStateManager : MonoBehaviour
 {
@@ -7,6 +9,7 @@ public class GameOverStateManager : MonoBehaviour
     [SerializeField] private RectTransform _gameOverUIContainer;
     [SerializeField] private Button _restartButton;
     [SerializeField] private Button _bactToMenuButton;
+    [SerializeField] private TMP_Text finalScoreValue;
 
     private void Start()
     {
@@ -32,7 +35,11 @@ public class GameOverStateManager : MonoBehaviour
     {
         if (e.NewGameState == GameState.GameOver)
         {
-            ScoreManager.Instance.StopScoring();
+            if (ScoreManager.Instance != null)
+            {
+                ScoreManager.Instance.StopScoring();
+                if (finalScoreValue) finalScoreValue.SetText(ScoreManager.Instance.GetScore().ToString());
+            }
             _gameOverUIContainer.gameObject.SetActive(true);
         }
     }

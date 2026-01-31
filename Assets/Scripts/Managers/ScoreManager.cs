@@ -28,13 +28,13 @@ public class ScoreManager : MonoBehaviour
         }
 
         Instance = this;
-        // DontDestroyOnLoad(gameObject); // odkomentuj jeśli ma przechodzić między scenami
+        // DontDestroyOnLoad(gameObject); // odkomentuj jeśli potrzeba przechodzić między scenami
     }
 
     private void Start()
     {
         OnScoreChanged += UpdateScoreText;
-        OnScoreChanged?.Invoke(score); // odśwież UI na starcie
+        OnScoreChanged?.Invoke(score); // odświeżanie UI na starcie
     }
 
     private void OnDestroy()
