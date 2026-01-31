@@ -41,7 +41,7 @@ public class PlayerMask : MonoBehaviour
 
     private void ShootRayForObstacles()
     {
-        Vector2 origin = transform.position + Vector3.up * .5f;
+        Vector2 origin = transform.position;
         Vector2 direction = Vector2.right;
 
         RaycastHit2D hit = Physics2D.Raycast(origin, direction, _obstacleDetectionRayLength, _obstacleLayer);
@@ -107,6 +107,6 @@ public class PlayerMask : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawRay(transform.position + Vector3.up * .5f, transform.right * _obstacleDetectionRayLength);
+        Gizmos.DrawRay(transform.position, transform.right * _obstacleDetectionRayLength);
     }
 }
