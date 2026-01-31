@@ -1638,8 +1638,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnvironmentLevelManager
   _currentEnvironmentLevel: 0
   _currentTimeToChangeLevel: 0
-  _minTimeToChangeLevel: 2
-  _maxTimeToChangeLevel: 4
+  _minTimeToChangeLevel: 15
+  _maxTimeToChangeLevel: 30
 --- !u!1 &1437985232
 GameObject:
   m_ObjectHideFlags: 0

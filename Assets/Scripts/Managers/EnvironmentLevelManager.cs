@@ -32,13 +32,22 @@ public class EnvironmentLevelManager : MonoBehaviour
     {
         Instance = this;
     }
-
-    private void Update()
+    private void Start()
     {
-        if (Keyboard.current.spaceKey.wasPressedThisFrame)
+        GameStateManager.Instance.OnGameStateChanged += GameStateManager_OnGameStateChanged;
+    }
+
+    private void GameStateManager_OnGameStateChanged(object sender, GameStateManager.OnGameStateChangedEventArgs e)
+    {
+        if (e.NewGameState == GameState.Playing)
         {
             ProcessStartNextLevel();
         }
+    }
+
+    private void OnDestroy()
+    {
+        GameStateManager.Instance.OnGameStateChanged -= GameStateManager_OnGameStateChanged;
     }
 
     private void ProcessStartNextLevel()

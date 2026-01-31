@@ -13,12 +13,15 @@ public class ObstacleSpawner : MonoBehaviour
     [SerializeField] private float _obstacleSpawnTime;
     [SerializeField] private float _obstacleSpeed;
 
-    private float timeUntilObstacleSpawn;
+    //run-time
+
+    private float _timeUntilObstacleSpawn;
+    private bool _shouldSpawn;
 
     public event EventHandler<OnSpeedUpdatedEventArgs> OnSpeedUpdated;
     public class OnSpeedUpdatedEventArgs : EventArgs
     {
-        public float NewSpeed {  get; }
+        public float NewSpeed { get; }
 
         public OnSpeedUpdatedEventArgs(float newSpeed)
         {
@@ -31,19 +34,36 @@ public class ObstacleSpawner : MonoBehaviour
         Instance = this;
     }
 
+    private void Start()
+    {
+        GameStateManager.Instance.OnGameStateChanged += GameStateManager_OnGameStateChanged;
+    }
+
+    private void OnDestroy()
+    {
+        GameStateManager.Instance.OnGameStateChanged -= GameStateManager_OnGameStateChanged;
+    }
+
+    private void GameStateManager_OnGameStateChanged(object sender, GameStateManager.OnGameStateChangedEventArgs e)
+    {
+        _shouldSpawn = e.NewGameState == GameState.Playing;
+    }
+
     private void Update()
     {
+        if (!_shouldSpawn) { return; }
+
         SpawnLoop();
     }
 
     private void SpawnLoop()
     {
-        timeUntilObstacleSpawn += Time.deltaTime;
+        _timeUntilObstacleSpawn += Time.deltaTime;
 
-        if (timeUntilObstacleSpawn >= _obstacleSpawnTime)
+        if (_timeUntilObstacleSpawn >= _obstacleSpawnTime)
         {
             Spawn();
-            timeUntilObstacleSpawn = 0f;
+            _timeUntilObstacleSpawn = 0f;
         }
     }
 

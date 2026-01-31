@@ -26,6 +26,9 @@ public class MovablePartsManager : MonoBehaviour
     [SerializeField] private float _minimumForegroundXOffset;
     [SerializeField] private float _maximumForegroundXOffset;
 
+    //run-time
+    private bool _shouldRun;
+
     private readonly List<Transform> _spawnedFloorParts = new List<Transform>();
 
     //
@@ -43,12 +46,20 @@ public class MovablePartsManager : MonoBehaviour
     {
         InstantiateStartParts();
 
+        GameStateManager.Instance.OnGameStateChanged += GameStateManager_OnGameStateChanged;
         EnvironmentLevelManager.Instance.OnLevelChanged += EnvironmentLevelManager_OnLevelChanged;
+    }
+
+    private void GameStateManager_OnGameStateChanged(object sender, GameStateManager.OnGameStateChangedEventArgs e)
+    {
+        _shouldRun = e.NewGameState == GameState.Playing;
     }
 
     private void OnDestroy()
     {
         EnvironmentLevelManager.Instance.OnLevelChanged -= EnvironmentLevelManager_OnLevelChanged;
+        GameStateManager.Instance.OnGameStateChanged -= GameStateManager_OnGameStateChanged;
+
     }
 
     private void EnvironmentLevelManager_OnLevelChanged(object sender, EnvironmentLevelManager.OnLevelChangedEventArgs e)
@@ -78,6 +89,8 @@ public class MovablePartsManager : MonoBehaviour
 
     private void Update()
     {
+        if (!_shouldRun) { return; }
+
         MoveParts(_spawnedFloorParts,MovableParts.Floor);
         MoveParts(_spawnedEdgeParts, MovableParts.Edge);
 
