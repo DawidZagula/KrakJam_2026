@@ -1550,7 +1550,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: ca6b8d311a1e08e48b6cbebaf3f8bd75, type: 3}
   _backroundPartSprites_TestLevel2: []
   _foregroundPartSprites_TestLevel2: []
-  _edgeSprite: {fileID: -5667742714563845051, guid: 0fe9769faecbe8a41990e0003ccb1bba, type: 3}
+  _edgeSprite: {fileID: 21300000, guid: ca6b8d311a1e08e48b6cbebaf3f8bd75, type: 3}
 --- !u!1 &765829372
 GameObject:
   m_ObjectHideFlags: 0

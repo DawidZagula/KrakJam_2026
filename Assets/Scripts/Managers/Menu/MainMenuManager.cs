@@ -8,6 +8,7 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private Transform _mainMenuButtonContainer;
     [SerializeField] private Transform _creditsContainer;
     [SerializeField] private GameObject _quitConfirmContainer;
+    [SerializeField] private Transform _difficultySelectionContainer;
     [Space]
     [SerializeField] private Button _startGameButton;
     [SerializeField] private Button _openCreditsMenuButton;
@@ -15,8 +16,10 @@ public class MainMenuManager : MonoBehaviour
     [Space]
     [SerializeField] private Button _backFromCreditsButton;
     [SerializeField] private Button _backFromQuitConfirmMenuButton;
+    [SerializeField] private Button _backFromDifficultySelectionButton;
     [Space]
     [SerializeField] private Button _quitButton;
+
 
     private void Start()
     {
@@ -25,9 +28,21 @@ public class MainMenuManager : MonoBehaviour
 
     private void AssignButtons()
     {
+        //_startGameButton.onClick.AddListener(() =>
+        //{
+        //    SceneLoader.Instance.ProcessLoadScene(Scenes.GameScene, true);
+        //});
+
         _startGameButton.onClick.AddListener(() =>
         {
-            SceneLoader.Instance.ProcessLoadScene(Scenes.GameScene, true);
+            _mainMenuButtonContainer.gameObject.SetActive(false);
+            _difficultySelectionContainer.gameObject.SetActive(true);
+        });
+
+        _backFromDifficultySelectionButton.onClick.AddListener(() =>
+        {
+            _difficultySelectionContainer.gameObject.SetActive(false);
+            _mainMenuButtonContainer.gameObject.SetActive(true);
         });
 
         _openCreditsMenuButton.onClick.AddListener(() =>
