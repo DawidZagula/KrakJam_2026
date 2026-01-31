@@ -27,3 +27,9 @@ public enum EnvironmentLevel
     TestLevel1,
     TestLevel2
 }
+
+public enum Scenes
+{
+    MainMenu,
+    GameScene
+}
