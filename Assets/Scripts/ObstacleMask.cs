@@ -4,9 +4,15 @@ public class ObstacleMask : MonoBehaviour
 {
     [SerializeField] private Mask requiredMask;
 
-    public bool CanBeDestroyed()
+    public void TryDefeatObstacle(Mask playerCurrentMask)
     {
-        return PlayerMask.Instance != null &&
-               PlayerMask.Instance.GetPlayerMask() == requiredMask;
+        if (playerCurrentMask == requiredMask)
+        {
+            Debug.Log("Defeat");
+        }
+        else
+        {
+            Debug.Log("Wrong mask");
+        }
     }
 }

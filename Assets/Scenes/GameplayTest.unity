@@ -1404,6 +1404,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Obstacle_red
       objectReference: {fileID: 0}
+    - target: {fileID: 9069349793205895523, guid: 0e415ce7a720cfe4f97d235a644a23df, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

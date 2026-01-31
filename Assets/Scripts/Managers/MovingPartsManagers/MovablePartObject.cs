@@ -13,7 +13,6 @@ public class MovablePartObject : MonoBehaviour
     public void SetRandomSprite(MovableParts partType)
     {
         _spriteRenderer.sprite = MovablePartVisualsRepository.Instance.GetRandomPartSprite(partType);
-        Debug.Log("Dynamically set sprite");
     }
 
 }

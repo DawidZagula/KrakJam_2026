@@ -7,9 +7,37 @@ public class PlayerMask : MonoBehaviour
     [Header("Debugging Only")]
     [SerializeField] private Mask _currentMask;
 
+    [Header("Configuration - Obstacle Detection")]
+    [SerializeField] private float _obstacleDetectionRayLength = 5f;
+    [SerializeField] private LayerMask _obstacleLayer;
+
     private void Awake()
     {
         Instance = this;
+    }
+
+    private void Update()
+    {
+        ShootRayForObstacles();
+    }
+
+    private void ShootRayForObstacles()
+    {
+        Vector2 origin = transform.position;
+        Vector2 direction = Vector2.right;
+
+        RaycastHit2D hit = Physics2D.Raycast(origin, direction, _obstacleDetectionRayLength, _obstacleLayer);
+
+        // Debug ray (widoczny w Scene)
+       // Debug.DrawRay(origin, direction * _rayLength, Color.red);
+
+        if (hit.collider != null)
+        {
+            if (hit.collider.TryGetComponent(out ObstacleMask obstacleMask))
+            {
+                obstacleMask.TryDefeatObstacle(_currentMask);
+            }
+        }
     }
 
     public Mask GetPlayerMask()
@@ -21,5 +49,11 @@ public class PlayerMask : MonoBehaviour
     {
         _currentMask = newMask;
         Debug.Log("Set player new mask: " + newMask);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawRay(transform.position, transform.right * _obstacleDetectionRayLength);
     }
 }

@@ -3,8 +3,8 @@ using UnityEngine.UI;
 
 public class MaskChecker : MonoBehaviour
 {
-    [SerializeField] private float rayLength = 5f;
-    [SerializeField] private LayerMask hitLayers;
+    [SerializeField] private float _rayLength = 5f;
+    [SerializeField] private LayerMask _obstacleLayer;
 
     private void Update()
     {
@@ -16,10 +16,10 @@ public class MaskChecker : MonoBehaviour
         Vector2 origin = transform.position;
         Vector2 direction = Vector2.right;
 
-        RaycastHit2D hit = Physics2D.Raycast(origin, direction, rayLength, hitLayers);
+        RaycastHit2D hit = Physics2D.Raycast(origin, direction, _rayLength, _obstacleLayer);
 
         // Debug ray (widoczny w Scene)
-        Debug.DrawRay(origin, direction * rayLength, Color.red);
+        Debug.DrawRay(origin, direction * _rayLength, Color.red);
 
         if (hit.collider != null)
         {
