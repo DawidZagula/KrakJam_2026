@@ -17,6 +17,11 @@ public class NotStartedStateManager : MonoBehaviour
             _notStartedUIContainer.gameObject.SetActive(false);
 
             GameStateManager.Instance.ChangeCurrentGameState(GameState.Playing);
+            if (ScoreManager.Instance != null)
+            {
+                ScoreManager.Instance.ResetScore();
+                ScoreManager.Instance.StartScoring();
+            }
         });
     }
 
