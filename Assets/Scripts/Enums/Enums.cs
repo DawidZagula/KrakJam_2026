@@ -33,3 +33,10 @@ public enum Scenes
     MainMenu,
     GameScene
 }
+
+public enum GameState
+{
+    NotStarted,
+    Playing,
+    GameOver
+}

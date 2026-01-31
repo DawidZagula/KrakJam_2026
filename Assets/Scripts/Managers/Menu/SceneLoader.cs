@@ -21,16 +21,15 @@ public class SceneLoader : MonoBehaviour
                     FadeTransitioner.Instance.FadeOut(() => LoadScene(0));
                     return;
                 }
-                LoadScene(1);
+                LoadScene(0);
                 break;
             case Scenes.GameScene:
                 if (shouldUseFade)
                 {
-                    Debug.Log("Should fade out");
                     FadeTransitioner.Instance.FadeOut(() => LoadScene(1));
                     return;
                 }
-                LoadScene(0);
+                LoadScene(1);
                 break;
         }
     }
