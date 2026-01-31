@@ -1,24 +1,32 @@
 using System.Collections.Generic;
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
 public class FloorLayerManager : MonoBehaviour
 {
-    [Header("Debugging Only")]
-    [SerializeField] private Transform _floorPartObjectPrefab;
+    [Header("Cached References")]
     [SerializeField] private Transform _floorPartsParent;
 
+    [SerializeField] private Transform _movablePartObjectPrefab;
+   // [SerializeField] private Transform _foregroundPartPrefab;
+   // [SerializeField] private Transform _backgroundPartPrefab;
+
     [Header("Configuration")]
-    [SerializeField] private int _numberOfFloorPartsAtStart;
+    [SerializeField] private int _numberOfPartsAtStart;
 
     [SerializeField] private float _floorPartLength;
+    [SerializeField] private float _backgroundPartLength;
+    [SerializeField] private float _foregroundPartLength;
 
-    [SerializeField] private float _moveSpeed;
+    [SerializeField] private float _floorMoveSpeed;
+    [SerializeField] private float _foregroundMoveSpeed;
+    [SerializeField] private float _backgroundMoveSpeed;
 
     private List<Transform> _spawnedFloorParts = new List<Transform>();
 
     private void Start()
     {
-        InstantiateStartFloorParts();
+        InstantiateStartParts();
     }
 
     private void Update()
@@ -26,24 +34,26 @@ public class FloorLayerManager : MonoBehaviour
         MoveFloorParts();
     }
 
-    private void InstantiateStartFloorParts()
+    private void InstantiateStartParts()
     {
-        for (int i = 0; i < _numberOfFloorPartsAtStart; i++)
+        for (int i = 0; i < _numberOfPartsAtStart; i++)
         {
-            SpawnFloorPartInstance();
+            SpawnPartInstance(MovableParts.Floor);
         }
     }
 
-    private void SpawnFloorPartInstance()
+    private void SpawnPartInstance(MovableParts movablePartType)
     {
         float spawnXOffset = GetSpawnXOffset();
 
         Vector3 spawmPosition = new Vector3(spawnXOffset, 0, 0);
 
         Transform spawnFloorPartInstance =
-             Instantiate(_floorPartObjectPrefab, spawmPosition, transform.rotation, _floorPartsParent);
+             Instantiate(_movablePartObjectPrefab, spawmPosition, transform.rotation, _floorPartsParent);
 
         _spawnedFloorParts.Add(spawnFloorPartInstance);
+
+        spawnFloorPartInstance.GetComponent<MovablePartObject>().SetRandomSprite(movablePartType);
     }
 
     private float GetSpawnXOffset()
@@ -67,14 +77,23 @@ public class FloorLayerManager : MonoBehaviour
         for (int i = 0; i < _spawnedFloorParts.Count; i++)
         {
             Transform spawnedFloorPartInstance = _spawnedFloorParts[i];
-            spawnedFloorPartInstance.Translate(-transform.right * (_moveSpeed * Time.deltaTime));
+            spawnedFloorPartInstance.Translate(-transform.right * (_floorMoveSpeed * Time.deltaTime));
 
             if (spawnedFloorPartInstance.position.x <= Camera.main.transform.position.x - _floorPartLength)
             {
                 _spawnedFloorParts.Remove(spawnedFloorPartInstance);
                 Destroy(spawnedFloorPartInstance.gameObject);
-                SpawnFloorPartInstance();
+                SpawnPartInstance(MovableParts.Floor);
             }
         }
     }
+
+    // For the difficulty increasing manager
+    public float GetFloorMoveSpeed() => _floorMoveSpeed;
+    public float GetBackgroundMoveSpeed() => _backgroundMoveSpeed;
+    public float GetForegroundMoveSpeed() => _foregroundMoveSpeed;
+
+    public void SetFloorMoveSpeed(float newSpeed) => _floorMoveSpeed = newSpeed;
+    public void SetBackgroundMoveSpeed(float newSpeed) => _backgroundMoveSpeed = newSpeed;
+    public void SetForegroundMoveSpeed(float newSpeed) => _foregroundMoveSpeed = newSpeed;
 }

@@ -350,11 +350,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57df950e5ba5e6043b2cde25a1bd043f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FloorLayerManager
-  _floorPartObjectPrefab: {fileID: 2262455909082620037, guid: c5bbfa4dc7eb79d4b93414fb52bc5078, type: 3}
   _floorPartsParent: {fileID: 428230853}
-  _numberOfFloorPartsAtStart: 10
+  _movablePartObjectPrefab: {fileID: 2262455909082620037, guid: c5bbfa4dc7eb79d4b93414fb52bc5078, type: 3}
+  _numberOfPartsAtStart: 10
   _floorPartLength: 12
-  _moveSpeed: 4
+  _backgroundPartLength: 0
+  _foregroundPartLength: 0
+  _floorMoveSpeed: 5
+  _foregroundMoveSpeed: 0
+  _backgroundMoveSpeed: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -712,6 +716,69 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager
   _audioClipList: []
+--- !u!1 &763173829
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 763173831}
+  - component: {fileID: 763173832}
+  - component: {fileID: 763173833}
+  m_Layer: 0
+  m_Name: MovablePartVisualsRepository
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &763173831
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 763173829}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 37.00747, y: -32.61876, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &763173832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 763173829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9284291acd3cdd40a1188a5796cf074, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FloorPartObject
+--- !u!114 &763173833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 763173829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a411755be503fba43bcc52299f395c9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MovablePartVisualsRepository
+  _floorPartSprites:
+  - {fileID: 21300000, guid: 6b66f721112b4ee4ba0732444983f7e5, type: 3}
+  - {fileID: 21300000, guid: 442bd0a4735f14b4aa8a15252137f7e8, type: 3}
+  - {fileID: 21300000, guid: 180ade28349e05f469d85823e4d3bae5, type: 3}
+  _backroundPartSprites: []
+  _foregroundPartSprites: []
 --- !u!1 &1188253862
 GameObject:
   m_ObjectHideFlags: 0
@@ -1420,3 +1487,4 @@ SceneRoots:
   - {fileID: 1349957531}
   - {fileID: 518036645}
   - {fileID: 428230853}
+  - {fileID: 763173831}

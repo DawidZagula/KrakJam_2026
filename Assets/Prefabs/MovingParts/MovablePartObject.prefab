@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: 2262455909082620037}
   - component: {fileID: 3836042249555907730}
   m_Layer: 0
-  m_Name: FloorPartObject
+  m_Name: MovablePartObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -11,3 +11,10 @@ public enum Mask
     TestMask1,
     TestMask2
 }
+
+public enum MovableParts
+{
+    Floor,
+    Background,
+    Foreground
+}
