@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class ObstacleMask : MonoBehaviour
 {
-    [SerializeField] private Mask requiredMask;
+    [SerializeField] private Mask _requiredMask;
 
     public void TryDefeatObstacle(Mask playerCurrentMask)
     {
-        if (playerCurrentMask == requiredMask)
+        if (playerCurrentMask == _requiredMask)
         {
             Debug.Log("Defeat");
         }
@@ -14,5 +14,10 @@ public class ObstacleMask : MonoBehaviour
         {
             Debug.Log("Wrong mask");
         }
+    }
+
+    public void SetMask(Mask mask)
+    {
+        _requiredMask = mask;
     }
 }
