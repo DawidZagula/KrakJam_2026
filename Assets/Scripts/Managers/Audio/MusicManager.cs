@@ -9,18 +9,13 @@ public class MusicManager : MonoBehaviour
 
     public enum AudioName
     {
-        Menu,
-        MainGame      
+        Menu     
     }
-
 
     [SerializeField] private List<AudioClip> _audioClipList = new List<AudioClip>();
     private AudioSource _audioSource;
 
-
     private Dictionary<AudioName, AudioClip> _enumNameAudioClipDictionary = new Dictionary<AudioName, AudioClip>();
-
-
 
     private void Awake()
     {
@@ -37,12 +32,10 @@ public class MusicManager : MonoBehaviour
 
         _audioSource = GetComponent<AudioSource>();
 
-        // TO UNCOMMENT, WHEN WE HAVE MUSIC
-
-        //foreach (AudioName audioName in System.Enum.GetValues(typeof(AudioName)))
-        //{
-        //    _enumNameAudioClipDictionary[audioName] = _audioClipList[(int)audioName];
-        //}
+        foreach (AudioName audioName in System.Enum.GetValues(typeof(AudioName)))
+        {
+            _enumNameAudioClipDictionary[audioName] = _audioClipList[(int)audioName];
+        }
 
     }
 
@@ -50,7 +43,7 @@ public class MusicManager : MonoBehaviour
     {
         if (arg0.buildIndex == 0)
         {
-          //  PlayMusic(AudioName.Menu);
+            PlayMusic(AudioName.Menu);
 
         }
         else if (arg0.buildIndex == 1)

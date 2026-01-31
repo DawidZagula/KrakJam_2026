@@ -1395,7 +1395,7 @@ MonoBehaviour:
   _audioClipList:
   - {fileID: 8300000, guid: 8b25f66f8a114774e8e941af79dba422, type: 3}
   - {fileID: 8300000, guid: 0c026d6d7c646414f979d6bf8419efe1, type: 3}
-  - {fileID: 8300000, guid: a95e67cf64157e24c873a749d08db48d, type: 3}
+  - {fileID: 8300000, guid: 1e51880f1362f6f44bf950cfc1840ccb, type: 3}
   - {fileID: 8300000, guid: 194b23741a0aab14997b3006b4436748, type: 3}
 --- !u!82 &659735771
 AudioSource:
@@ -2745,7 +2745,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 41.837, y: -338}
+  m_AnchoredPosition: {x: 41.836914, y: -338}
   m_SizeDelta: {x: 171.7585, y: 171.7585}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1456753330
