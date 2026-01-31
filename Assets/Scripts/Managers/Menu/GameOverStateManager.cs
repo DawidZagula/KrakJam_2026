@@ -32,6 +32,7 @@ public class GameOverStateManager : MonoBehaviour
     {
         if (e.NewGameState == GameState.GameOver)
         {
+            ScoreManager.Instance.StopScoring();
             _gameOverUIContainer.gameObject.SetActive(true);
         }
     }

@@ -9,15 +9,18 @@ public class ScoreManager : MonoBehaviour
     [Header("Score")]
     [SerializeField] private int score = 0;
     [SerializeField] private float scoreInterval = 1f;
+    [SerializeField] private int pointsPerTick = 1;
 
     [Header("UI")]
     [SerializeField] private TMP_Text scoreText;
 
     public event Action<int> OnScoreChanged;
 
+    public int CurrentScore => score;
+    public bool IsCounting { get; private set; }
+
     private void Awake()
     {
-        // Singleton (opcjonalny, ale praktyczny)
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -25,14 +28,13 @@ public class ScoreManager : MonoBehaviour
         }
 
         Instance = this;
+        // DontDestroyOnLoad(gameObject); // odkomentuj jeśli ma przechodzić między scenami
     }
 
     private void Start()
     {
-        // Podpinamy event do funkcji aktualizującej tekst
         OnScoreChanged += UpdateScoreText;
-
-        InvokeRepeating(nameof(IncreaseScore), scoreInterval, scoreInterval);
+        OnScoreChanged?.Invoke(score); // odśwież UI na starcie
     }
 
     private void OnDestroy()
@@ -40,16 +42,55 @@ public class ScoreManager : MonoBehaviour
         OnScoreChanged -= UpdateScoreText;
     }
 
-    private void IncreaseScore()
+    // --- API dla reszty gry ---
+
+    public int GetScore()
     {
-        score++;
+        return score;
+    }
+
+    public void StartScoring()
+    {
+        if (IsCounting) return;
+
+        IsCounting = true;
+        InvokeRepeating(nameof(TickScore), scoreInterval, scoreInterval);
+    }
+
+    public void StopScoring()
+    {
+        if (!IsCounting) return;
+
+        IsCounting = false;
+        CancelInvoke(nameof(TickScore));
+    }
+
+    public void ResetScore()
+    {
+        score = 0;
+        OnScoreChanged?.Invoke(score);
+    }
+
+    public void AddScore(int amount)
+    {
+        if (amount <= 0) return;
+
+        score += amount;
+        OnScoreChanged?.Invoke(score);
+    }
+
+    // --- Wewnętrzna logika ---
+
+    private void TickScore()
+    {
+        score += pointsPerTick;
         OnScoreChanged?.Invoke(score);
     }
 
     private void UpdateScoreText(int newScore)
     {
-        if (scoreText == null) return;
-
-        scoreText.text = newScore.ToString();
+        if (scoreText != null)
+            scoreText.text = newScore.ToString();
     }
 }
+
