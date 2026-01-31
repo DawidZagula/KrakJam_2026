@@ -2498,6 +2498,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1349957531}
   - component: {fileID: 1349957532}
+  - component: {fileID: 1349957533}
   m_Layer: 0
   m_Name: Ghost
   m_TagString: Untagged
@@ -2528,12 +2529,32 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1349957530}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 028b2a5f902657b4fbef3b746ae298d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GhostMover
   _moveSpeed: 1
+  _waypoints:
+  - {fileID: 278225855}
+  - {fileID: 1451948144}
+  - {fileID: 1600139566}
+  - {fileID: 596212337}
+  - {fileID: 1299151119}
+--- !u!114 &1349957533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1349957530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd40de2b29ccc9a4690bceb83c6541be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GhostMoverFrameRelated
+  _moveSpeed: 4
+  _movementFramesPerSecond: 8
   _waypoints:
   - {fileID: 278225855}
   - {fileID: 1451948144}
