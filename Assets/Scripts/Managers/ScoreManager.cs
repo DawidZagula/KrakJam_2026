@@ -8,15 +8,21 @@ public class ScoreManager : MonoBehaviour
 
     [Header("Score")]
     [SerializeField] private int score = 0;
-    [SerializeField] private float scoreInterval = 1f;
+    [SerializeField] private float scoreInterval = 0.5f;
     [SerializeField] private int pointsPerTick = 1;
+
+    [Header("Score Multiplier")]
+    [SerializeField] private float scoreAccumulationModifier = 0.7f;
+    [SerializeField] private int pointMultiplierBetweenLevels = 2;
 
     [Header("UI")]
     [SerializeField] private TMP_Text scoreText;
 
     public event Action<int> OnScoreChanged;
 
+    private int levelScoreCounter = 0;
     public int CurrentScore => score;
+
     public bool IsCounting { get; private set; }
 
     private void Awake()
@@ -35,11 +41,14 @@ public class ScoreManager : MonoBehaviour
     {
         OnScoreChanged += UpdateScoreText;
         OnScoreChanged?.Invoke(score); // odświeżanie UI na starcie
+
+        EnvironmentLevelManager.Instance.OnLevelChanged += UpdateScoreAccumulation;
     }
 
     private void OnDestroy()
     {
         OnScoreChanged -= UpdateScoreText;
+        EnvironmentLevelManager.Instance.OnLevelChanged -= UpdateScoreAccumulation;
     }
 
     // --- API dla reszty gry ---
@@ -77,6 +86,28 @@ public class ScoreManager : MonoBehaviour
 
         score += amount;
         OnScoreChanged?.Invoke(score);
+    }
+
+    //Naliczanie dodatkowych punktów. W taki sposób, bo tak.
+    public void UpdateScoreAccumulation(object sender, EnvironmentLevelManager.OnLevelChangedEventArgs e)
+    {
+        pointsPerTick++;
+
+        levelScoreCounter++;
+        if (pointMultiplierBetweenLevels != 0)
+        {
+            if (levelScoreCounter % pointMultiplierBetweenLevels == 0)
+            {
+                double bonus = levelScoreCounter * 10 * scoreAccumulationModifier;
+                score += (int)Math.Ceiling(bonus);
+            }
+        }
+
+    }
+
+    public void ResetScoreAccumulation()
+    {
+        scoreInterval = 1f;
     }
 
     // --- Wewnętrzna logika ---
