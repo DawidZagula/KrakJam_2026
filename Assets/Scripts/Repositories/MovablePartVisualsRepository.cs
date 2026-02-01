@@ -37,7 +37,7 @@ public class MovablePartVisualsRepository : MonoBehaviour
         Instance = this;
 
         UpdateCurrentSpriteLists(EnvironmentLevel.TestLevel0);
-    }   
+    }
 
     private void Start()
     {
@@ -76,7 +76,7 @@ public class MovablePartVisualsRepository : MonoBehaviour
                     _currentLevelFloorPartSprites_1.Add(floorSprite);
                 }
 
-                foreach (Sprite backgroundSprite  in _backroundPartSprites_TestLevel0)
+                foreach (Sprite backgroundSprite in _backroundPartSprites_TestLevel0)
                 {
                     _currentLevelBackgroundSprites.Add(backgroundSprite);
                 }
@@ -146,9 +146,17 @@ public class MovablePartVisualsRepository : MonoBehaviour
                     Random.Range(0, _currentLevelFloorPartSprites_0.Count) :
                     Random.Range(0, _currentLevelFloorPartSprites_1.Count);
 
-                _takeFloorPartsFromList_0 = !_takeFloorPartsFromList_0;
 
-                return _currentLevelFloorPartSprites_0[randomIndex];
+                if (_takeFloorPartsFromList_0)
+                {
+                    _takeFloorPartsFromList_0 = !_takeFloorPartsFromList_0;
+                    return _currentLevelFloorPartSprites_0[randomIndex];
+                }
+                else
+                {
+                    _takeFloorPartsFromList_0 = !_takeFloorPartsFromList_0;
+                    return _currentLevelFloorPartSprites_1[randomIndex];
+                }
 
             case MovableParts.Background:
                 randomIndex = Random.Range(0, _currentLevelBackgroundSprites.Count);

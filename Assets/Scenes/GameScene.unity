@@ -1818,21 +1818,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MovablePartVisualsRepository
   _floorPartSprites_TestLevel0_0:
-  - {fileID: 21300000, guid: 34c5ed685cd96294e99fe0985685b613, type: 3}
-  _floorPartSprites_TestLevel0_1:
   - {fileID: 21300000, guid: 07209089b6dbcab4ba0f24717629d8d8, type: 3}
+  _floorPartSprites_TestLevel0_1:
+  - {fileID: 21300000, guid: 34c5ed685cd96294e99fe0985685b613, type: 3}
   _backroundPartSprites_TestLevel0: []
   _foregroundPartSprites_TestLevel0: []
   _floorPartSprites_TestLevel1_0:
-  - {fileID: 21300000, guid: e5393eeebe850b64fab58eb283df050e, type: 3}
-  _floorPartSprites_TestLevel1_1:
   - {fileID: 21300000, guid: 1d5edeea9aa686444a7ad0a2748b2d2f, type: 3}
+  _floorPartSprites_TestLevel1_1:
+  - {fileID: 21300000, guid: e5393eeebe850b64fab58eb283df050e, type: 3}
   _backroundPartSprites_TestLevel1: []
   _foregroundPartSprites_TestLevel1: []
   _floorPartSprites_TestLevel2_0:
-  - {fileID: 21300000, guid: 56ff4a53eed5a51488dea185f054a7f1, type: 3}
+  - {fileID: 21300000, guid: 1d5edeea9aa686444a7ad0a2748b2d2f, type: 3}
   _floorPartSprites_TestLevel2_1:
-  - {fileID: 21300000, guid: 5efc5ad1dfb9ed447b3ebcb72d4abf49, type: 3}
+  - {fileID: 21300000, guid: e5393eeebe850b64fab58eb283df050e, type: 3}
   _backroundPartSprites_TestLevel2: []
   _foregroundPartSprites_TestLevel2: []
   _edgeSprite: {fileID: -5899927303015767666, guid: 4a5c8dac820495a4e9dad5e7c6d4fea5, type: 3}
@@ -4926,7 +4926,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4685151864040769593, guid: cd734b44472262b4aa80eb00a1b42bdc, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6325095801457869708, guid: cd734b44472262b4aa80eb00a1b42bdc, type: 3}
       propertyPath: m_Pivot.x
