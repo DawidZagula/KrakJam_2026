@@ -13,11 +13,19 @@ public class PlayerHitReceiver : MonoBehaviour
     [Space]
     [SerializeField] private float _immunityTimeAfterHit;
 
+    //Cached References
+    private Animator _animator;
+
     //run-time
     private bool _isImmune = false;
 
     private Coroutine _hitBackRoutine;
     private Coroutine _immmunityRoutine;
+
+    private void Awake()
+    {
+        _animator = GetComponentInChildren<Animator>();
+    }
 
     public void Hit()
     {
@@ -31,6 +39,8 @@ public class PlayerHitReceiver : MonoBehaviour
 
         if (_hitBackRoutine != null) { return; }
         _hitBackRoutine = StartCoroutine(HitBackRoutine());
+
+        _animator.Play("playerElectroShock");
 
         if (_immmunityRoutine != null) { return; }
         _immmunityRoutine = StartCoroutine(ImmunityRoutine());
