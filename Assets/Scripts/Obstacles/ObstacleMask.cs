@@ -17,7 +17,8 @@ public class ObstacleMask : MonoBehaviour
     {
         if (playerCurrentMask == _requiredMask)
         {
-            _animator.Play("AfterMaskHit");
+           // _animator.Play("AfterMaskHit");
+           Destroy(gameObject);
             return true;
         }
         else
