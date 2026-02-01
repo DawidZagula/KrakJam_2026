@@ -38,11 +38,11 @@ public class MovablePartObject : MonoBehaviour
 
             case MovableParts.Foreground:
 
-                return 3;
+                return 4;
 
             case MovableParts.Edge:
 
-                return 4;
+                return 5;
         }
     }
 }
