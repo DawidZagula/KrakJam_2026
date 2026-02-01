@@ -2062,6 +2062,9 @@ MonoBehaviour:
   _swapsCountText: {fileID: 225010417}
   _maxMaskSwaps: 3
   _swapReplenishmentDuration: 3
+  _fullSprite: {fileID: 21300000, guid: 234b716df022da1418d115a646848f2a, type: 3}
+  _emptySprite: {fileID: 21300000, guid: d71ad039830477644aba0c5512adbbd6, type: 3}
+  _swapsImage: {fileID: 1456753330}
   _currentMaskSwaps: 0
   _shouldReplenishFirstSwap: 0
 --- !u!1 &1091388105

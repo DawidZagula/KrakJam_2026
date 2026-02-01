@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MaskSwapLimiter : MonoBehaviour
 {
@@ -14,6 +15,11 @@ public class MaskSwapLimiter : MonoBehaviour
     [Space]
     [Header("Configuration - Normal Difficulty Only")]
     [SerializeField] private float _swapReplenishmentDuration;
+    [Space]
+    [Header("UI Configuration")]
+    [SerializeField] private Sprite _fullSprite;
+    [SerializeField] private Sprite _emptySprite;
+    [SerializeField] private Image _swapsImage;
     [Space]
     [Header("Debugging Only")]
     [SerializeField] private int _currentMaskSwaps;
@@ -68,11 +74,17 @@ public class MaskSwapLimiter : MonoBehaviour
             UpdateSwapsCountText();
         }
 
-        if (_currentMaskSwaps == 0 && _shouldReplenishFirstSwap)
+        if (_currentMaskSwaps == 0)
         {
-            if (_replenishSwapRoutine != null) { return; }
+            _swapsImage.sprite = _emptySprite;
+            
+            if (_shouldReplenishFirstSwap)
+            {
+                if (_replenishSwapRoutine != null) { return; }
 
-            _replenishSwapRoutine = StartCoroutine(ReplenishSwapRoutine());
+                _replenishSwapRoutine = StartCoroutine(ReplenishSwapRoutine());
+
+            }
         }
 
     }
@@ -84,6 +96,10 @@ public class MaskSwapLimiter : MonoBehaviour
         if (_currentMaskSwaps == 0)
         {
             _currentMaskSwaps++;
+            if (_swapsImage.sprite != _fullSprite)
+            {
+                _swapsImage.sprite = _fullSprite;
+            }
             UpdateSwapsCountText();
         }
         _replenishSwapRoutine = null;
@@ -94,6 +110,12 @@ public class MaskSwapLimiter : MonoBehaviour
         if ( _currentMaskSwaps < 3)
         {
             _currentMaskSwaps++;
+
+            if (_swapsImage.sprite != _fullSprite)
+            {
+                _swapsImage.sprite = _fullSprite;
+            }
+
             UpdateSwapsCountText();
         }
     }
