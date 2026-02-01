@@ -49,6 +49,7 @@ public class PlayerAnimator : MonoBehaviour
     {
         if (e.NewGameState == GameState.Playing)
         {
+            //TO UPDATE FOR REPAIR MASK RUN
             _animator.Play("playerNoMaskRun");
         }
         else if (e.NewGameState == GameState.GameOver)
@@ -59,23 +60,40 @@ public class PlayerAnimator : MonoBehaviour
 
     private void PlayerMask_OnChangedMask(object sender, PlayerMask.OnChangedMaskEventArgs e)
     {
-        switch (e.NewMask)
+        if (!(GameStateManager.Instance.GetCurrentGameState() == GameState.Playing)) { return; }
+
+        SelectAnimationToMask(e.NewMask);
+    }
+
+    //Called at the end of electricity hit animation
+    public void SetBackAnimationToMask()
+    {
+        Mask currentMask = PlayerMask.Instance.GetPlayerMask();
+       SelectAnimationToMask(currentMask);
+    }
+
+    public void SelectAnimationToMask(Mask newMask)
+    {
+        switch (newMask)
         {
             default:
             case Mask.Repair:
-                //
+                _animator.Play("playerNoMaskRun");
+
                 break;
 
             case Mask.Destruction:
-                //
+                _animator.Play("playerNoMaskRun");
+
                 break;
 
             case Mask.Consolation:
-                //
+                _animator.Play("playerConsolationMaskRun");
+
                 break;
 
             case Mask.Fright:
-                //
+                _animator.Play("playerNoMaskRun");
 
                 break;
         }
