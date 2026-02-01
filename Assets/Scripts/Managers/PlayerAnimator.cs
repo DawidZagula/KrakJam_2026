@@ -78,11 +78,13 @@ public class PlayerAnimator : MonoBehaviour
         {
             default:
             case Mask.Repair:
+               // _animator.Play("playerRepairMaskRun");
                 _animator.Play("playerNoMaskRun");
 
                 break;
 
             case Mask.Destruction:
+                // _animator.Play("playerDestructionMaskRun");
                 _animator.Play("playerNoMaskRun");
 
                 break;
