@@ -68,7 +68,7 @@ public class PlayerAnimator : MonoBehaviour
     public void SetBackAnimationToMask()
     {
         Mask currentMask = PlayerMask.Instance.GetPlayerMask();
-       SelectAnimationToMask(currentMask);
+        SelectAnimationToMask(currentMask);
     }
 
     public void SelectAnimationToMask(Mask newMask)
@@ -82,8 +82,7 @@ public class PlayerAnimator : MonoBehaviour
                 break;
 
             case Mask.Destruction:
-                // _animator.Play("playerDestructionMaskRun");
-                _animator.Play("playerNoMaskRun");
+                _animator.Play("playerDestructionMaskRun");
 
                 break;
 
