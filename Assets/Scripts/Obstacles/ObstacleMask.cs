@@ -2,13 +2,22 @@ using UnityEngine;
 
 public class ObstacleMask : MonoBehaviour
 {
+    [Header("Configuration")]
     [SerializeField] private Mask _requiredMask;
+
+    //Cached References
+    private Animator _animator;
+
+    private void Awake()
+    {
+        _animator = GetComponent<Animator>();
+    }
 
     public bool TryDefeatObstacle(Mask playerCurrentMask)
     {
         if (playerCurrentMask == _requiredMask)
         {
-            Destroy(gameObject);
+            _animator.Play("AfterMaskHit");
             return true;
         }
         else

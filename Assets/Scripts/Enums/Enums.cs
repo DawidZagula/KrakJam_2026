@@ -1,9 +1,3 @@
-using UnityEngine;
-
-public class Enums : MonoBehaviour
-{
-    
-}
 
 public enum Mask
 {

@@ -47,7 +47,6 @@ public class MaskSelector : MonoBehaviour
 
         DeselectAllSlots();
         SelectActiveSlot(choosenIndex);
-        //ChangeActiveMask();
     }
 
     private void ToggleActiveMask_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
@@ -55,7 +54,6 @@ public class MaskSelector : MonoBehaviour
         if (MaskSwapLimiter.Instance.GetCurrentMaskSwaps() == 0 ||
             GameStateManager.Instance.GetCurrentGameState() != GameState.Playing)
         {
-            //POSSIBLY: implement some visual indication there is no more swaps left
             return;
         }
 
@@ -76,7 +74,6 @@ public class MaskSelector : MonoBehaviour
 
         DeselectAllSlots();
         SelectActiveSlot(_activeSlotIndexNumber);
-        //ChangeActiveMask();
     }
 
 
@@ -117,8 +114,4 @@ public class MaskSelector : MonoBehaviour
         }
     }
 
-    //public void ChangeActiveMask()
-    //{
-    //   //To implement
-    //}
 }

@@ -42,7 +42,6 @@ public class MovablePartVisualsRepository : MonoBehaviour
     private void Start()
     {
         EnvironmentLevelManager.Instance.OnLevelChanged += EnvironmentLevelManager_OnLevelChanged;
-
     }
 
     private void OnDestroy()
@@ -129,7 +128,6 @@ public class MovablePartVisualsRepository : MonoBehaviour
                 {
                     _currentLevelForegroundSprites.Add(foregroundSprite);
                 }
-
 
                 break;
         }

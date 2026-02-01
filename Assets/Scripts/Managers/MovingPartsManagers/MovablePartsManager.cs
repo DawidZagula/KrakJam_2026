@@ -1,6 +1,4 @@
 using System.Collections.Generic;
-using UnityEditor;
-using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
 public class MovablePartsManager : MonoBehaviour
@@ -31,7 +29,6 @@ public class MovablePartsManager : MonoBehaviour
 
     private readonly List<Transform> _spawnedFloorParts = new List<Transform>();
 
-    //
     private readonly List<Transform> _spawnedEdgeParts = new List<Transform>();
 
     private readonly List<Transform> _spawnedBackgroundParts = new List<Transform>();
@@ -59,12 +56,10 @@ public class MovablePartsManager : MonoBehaviour
     {
         EnvironmentLevelManager.Instance.OnLevelChanged -= EnvironmentLevelManager_OnLevelChanged;
         GameStateManager.Instance.OnGameStateChanged -= GameStateManager_OnGameStateChanged;
-
     }
 
     private void EnvironmentLevelManager_OnLevelChanged(object sender, EnvironmentLevelManager.OnLevelChangedEventArgs e)
     {
-        // Position environment object with special transition sprite exactly at the edges of level transition
         InstantiateEdgeSprite();
     }
 

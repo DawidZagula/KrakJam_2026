@@ -1,7 +1,5 @@
-using System;
 using System.Collections;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class MaskSwapLimiter : MonoBehaviour
@@ -40,8 +38,6 @@ public class MaskSwapLimiter : MonoBehaviour
         _shouldReplenishFirstSwap = ChosenDifficultyManager.Instance.GetSelectedDifficulty() 
             == ChosenDifficultyManager.GlobalDiffulty.Normal;
     }
-
-
     private void OnDestroy()
     {
         PlayerMask.Instance.OnChangedMask -= PlayerMask_OnChangedMask;

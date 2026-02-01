@@ -10,22 +10,29 @@ public class ObstacleSpawner : MonoBehaviour
     [SerializeField] private GameObject[] _obstaclePrefabs;
     [SerializeField] private Transform _obstacleSpawnPoint;
     [SerializeField] private Transform _obstaclesParent;
+    [Space]
 
     [SerializeField] private float _obstacleSpawnTime;
     [SerializeField] private float _obstacleSpeed;
+    [Space]
 
     [Header("Configuration - Variable spawn time")]
     [SerializeField] private bool _isSpawnTimeVariable;
     [Space]
+
     [SerializeField] private float _currentMinSpawnTime;
     [SerializeField] private float _currentMaxSpawnTime;
+    [Space]
+
     [Header("Configuration - Difficulty increase")]
     [SerializeField] private bool _shouldIncreaseSpawnTime;
     [Space]
+
     [SerializeField] private float _minTimeBeforeIncreasingSpawnTime;
     [SerializeField] private float _maxTimeBeforeIncreasingSpawnTime;
     [SerializeField] private float _singleMaxSpawnTimeDecrease;
     [Space]
+
     [SerializeField] private bool _shouldDecreaseMinSpawnTime;
     [SerializeField] private float _minSpawnTimeDecreaseRate;
     [SerializeField] private float _singleMinSpawnTimeDecrease;

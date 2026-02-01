@@ -22,8 +22,6 @@ public class GameStateManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-
-       // ChangeCurrentGameState(GameState.NotStarted);
     }
 
     public void ChangeCurrentGameState(GameState newGameState)

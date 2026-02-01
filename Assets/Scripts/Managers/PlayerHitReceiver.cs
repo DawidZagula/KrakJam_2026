@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -83,7 +81,6 @@ public class PlayerHitReceiver : MonoBehaviour
 
     private void ProcessDeath()
     {
-        //Entire process, when we have animation
         GameStateManager.Instance.ChangeCurrentGameState(GameState.GameOver);
     }
 }

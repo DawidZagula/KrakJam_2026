@@ -847,7 +847,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMask
   _currentMask: 0
-  _obstacleDetectionRayLength: 7.11
+  _obstacleDetectionRayLength: 2.5
   _obstacleLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -901,7 +901,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.49901485}
+  m_Offset: {x: 0, y: 0.08857179}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -911,7 +911,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 4.3245883}
   m_EdgeRadius: 0
 --- !u!50 &324912051
 Rigidbody2D:

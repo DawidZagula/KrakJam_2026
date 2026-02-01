@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 public class DifficultyManager : MonoBehaviour
 {
@@ -38,7 +37,6 @@ public class DifficultyManager : MonoBehaviour
     private void EnvironmentLevelManager_OnLevelChanged(object sender, EnvironmentLevelManager.OnLevelChangedEventArgs e)
     {
         UpdateSpeed();
-
     }
 
     private void UpdateSpeed()
