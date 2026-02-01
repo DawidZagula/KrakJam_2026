@@ -93,7 +93,7 @@ public class PlayerAnimator : MonoBehaviour
                 break;
 
             case Mask.Fright:
-                _animator.Play("playerNoMaskRun");
+                _animator.Play("playerFrightMaskRun");
 
                 break;
         }
