@@ -49,8 +49,7 @@ public class PlayerAnimator : MonoBehaviour
     {
         if (e.NewGameState == GameState.Playing)
         {
-            //TO UPDATE FOR REPAIR MASK RUN
-            _animator.Play("playerNoMaskRun");
+            _animator.Play("playerRepairMaskRun");
         }
         else if (e.NewGameState == GameState.GameOver)
         {
@@ -78,8 +77,7 @@ public class PlayerAnimator : MonoBehaviour
         {
             default:
             case Mask.Repair:
-               // _animator.Play("playerRepairMaskRun");
-                _animator.Play("playerNoMaskRun");
+                _animator.Play("playerRepairMaskRun");
 
                 break;
 
