@@ -44,7 +44,9 @@ public class MovablePartsManager : MonoBehaviour
         InstantiateStartParts();
 
         GameStateManager.Instance.OnGameStateChanged += GameStateManager_OnGameStateChanged;
-        EnvironmentLevelManager.Instance.OnLevelChanged += EnvironmentLevelManager_OnLevelChanged;
+
+        //NOT IMPLEMENTED
+      //  EnvironmentLevelManager.Instance.OnLevelChanged += EnvironmentLevelManager_OnLevelChanged;
     }
 
     private void GameStateManager_OnGameStateChanged(object sender, GameStateManager.OnGameStateChangedEventArgs e)
@@ -54,7 +56,7 @@ public class MovablePartsManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        EnvironmentLevelManager.Instance.OnLevelChanged -= EnvironmentLevelManager_OnLevelChanged;
+      //  EnvironmentLevelManager.Instance.OnLevelChanged -= EnvironmentLevelManager_OnLevelChanged;
         GameStateManager.Instance.OnGameStateChanged -= GameStateManager_OnGameStateChanged;
     }
 
@@ -87,7 +89,9 @@ public class MovablePartsManager : MonoBehaviour
         if (!_shouldRun) { return; }
 
         MoveParts(_spawnedFloorParts,MovableParts.Floor);
-        MoveParts(_spawnedEdgeParts, MovableParts.Edge);
+
+        //NOT IMPLEMENTED
+       // MoveParts(_spawnedEdgeParts, MovableParts.Edge);
 
         //No graphics yet
        // MoveParts(_spawnedBackgroundParts, MovableParts.Background);
