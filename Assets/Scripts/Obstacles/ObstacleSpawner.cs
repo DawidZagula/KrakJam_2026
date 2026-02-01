@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class ObstacleSpawner : MonoBehaviour
@@ -12,6 +13,23 @@ public class ObstacleSpawner : MonoBehaviour
 
     [SerializeField] private float _obstacleSpawnTime;
     [SerializeField] private float _obstacleSpeed;
+
+    [Header("Configuration - Variable spawn time")]
+    [SerializeField] private bool _isSpawnTimeVariable;
+    [Space]
+    [SerializeField] private float _currentMinSpawnTime;
+    [SerializeField] private float _currentMaxSpawnTime;
+    [Header("Configuration - Difficulty increase")]
+    [SerializeField] private bool _shouldIncreaseSpawnTime;
+    [Space]
+    [SerializeField] private float _minTimeBeforeIncreasingSpawnTime;
+    [SerializeField] private float _maxTimeBeforeIncreasingSpawnTime;
+    [SerializeField] private float _singleMaxSpawnTimeDecrease;
+    [Space]
+    [SerializeField] private bool _shouldDecreaseMinSpawnTime;
+    [SerializeField] private float _minSpawnTimeDecreaseRate;
+    [SerializeField] private float _singleMinSpawnTimeDecrease;
+    [SerializeField] private float _finalMinSpawnTime;
 
     //run-time
 
@@ -37,6 +55,95 @@ public class ObstacleSpawner : MonoBehaviour
     private void Start()
     {
         GameStateManager.Instance.OnGameStateChanged += GameStateManager_OnGameStateChanged;
+
+        if (!_isSpawnTimeVariable) { return; }
+
+        StartCoroutine(SpawnVariableTimeRoutine());
+
+        if (!_shouldIncreaseSpawnTime) { return; }
+        
+            StartCoroutine(IncreaseSpawnFrequencyRoutine());
+
+        if (!_shouldDecreaseMinSpawnTime) { return; }
+        
+            StartCoroutine(DecreaseMinSpawnTimeRoutine());
+        
+    }
+
+    private IEnumerator SpawnVariableTimeRoutine()
+    {
+        while (true)
+        {
+            yield return new WaitUntil(() => _shouldSpawn);
+
+            float nextSpawnTime = UnityEngine.Random.Range(
+                _currentMinSpawnTime,
+                _currentMaxSpawnTime
+            );
+
+            yield return new WaitForSeconds(nextSpawnTime);
+
+            if (!_shouldSpawn)
+            {
+                continue;
+            }
+
+            Spawn();
+        }
+    }
+
+    private IEnumerator IncreaseSpawnFrequencyRoutine()
+    {
+        while (true)
+        {
+            yield return new WaitUntil(() => _shouldSpawn);
+
+            float timeUntilNextIncrease = UnityEngine.Random.Range(
+                _minTimeBeforeIncreasingSpawnTime,
+                _maxTimeBeforeIncreasingSpawnTime
+            );
+
+            yield return new WaitForSeconds(timeUntilNextIncrease);
+
+            if (!_shouldSpawn)
+            {
+                continue;
+            }
+
+            _currentMaxSpawnTime -= _singleMaxSpawnTimeDecrease;
+
+            _currentMaxSpawnTime = Mathf.Max(
+                _currentMaxSpawnTime,
+                _currentMinSpawnTime
+            );
+        }
+    }
+
+    private IEnumerator DecreaseMinSpawnTimeRoutine()
+    {
+        while (true)
+        {
+            yield return new WaitUntil(() => _shouldSpawn);
+
+            yield return new WaitForSeconds(_minSpawnTimeDecreaseRate);
+
+            if (!_shouldSpawn)
+            {
+                continue;
+            }
+
+            _currentMinSpawnTime -= _singleMinSpawnTimeDecrease;
+
+            _currentMinSpawnTime = Mathf.Max(
+                _currentMinSpawnTime,
+                _finalMinSpawnTime
+            );
+
+            _currentMaxSpawnTime = Mathf.Max(
+                _currentMaxSpawnTime,
+                _currentMinSpawnTime
+            );
+        }
     }
 
     private void OnDestroy()
@@ -51,7 +158,7 @@ public class ObstacleSpawner : MonoBehaviour
 
     private void Update()
     {
-        if (!_shouldSpawn) { return; }
+        if (!_shouldSpawn || _isSpawnTimeVariable) { return; }
 
         SpawnLoop();
     }

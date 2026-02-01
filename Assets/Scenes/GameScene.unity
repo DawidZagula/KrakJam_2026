@@ -4487,6 +4487,17 @@ MonoBehaviour:
   _obstaclesParent: {fileID: 1091388106}
   _obstacleSpawnTime: 5
   _obstacleSpeed: 3
+  _isSpawnTimeVariable: 1
+  _currentMinSpawnTime: 4
+  _currentMaxSpawnTime: 8
+  _shouldIncreaseSpawnTime: 1
+  _minTimeBeforeIncreasingSpawnTime: 3
+  _maxTimeBeforeIncreasingSpawnTime: 5
+  _singleMaxSpawnTimeDecrease: 0.2
+  _shouldDecreaseMinSpawnTime: 1
+  _minSpawnTimeDecreaseRate: 3
+  _singleMinSpawnTimeDecrease: 0.2
+  _finalMinSpawnTime: 1
 --- !u!1 &1823504477
 GameObject:
   m_ObjectHideFlags: 0
