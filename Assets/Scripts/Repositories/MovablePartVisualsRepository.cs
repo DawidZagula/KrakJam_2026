@@ -52,6 +52,8 @@ public class MovablePartVisualsRepository : MonoBehaviour
 
     private void EnvironmentLevelManager_OnLevelChanged(object sender, EnvironmentLevelManager.OnLevelChangedEventArgs e)
     {
+
+        _takeFloorPartsFromList_0 = true;
         UpdateCurrentSpriteLists(e.NewEnvironmentLevel);
     }
 

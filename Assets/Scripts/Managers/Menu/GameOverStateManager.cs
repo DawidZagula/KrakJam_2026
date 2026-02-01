@@ -46,6 +46,9 @@ public class GameOverStateManager : MonoBehaviour
                 if (finalScoreValue) finalScoreValue.SetText(ScoreManager.Instance.GetScore().ToString());
             }
             _gameOverUIContainer.gameObject.SetActive(true);
+
+            MusicManager.Instance.StopPlaying();
+            AudioManager.Instance.PlaySound(AudioManager.AudioName.Dead_sound);
         }
     }
 }

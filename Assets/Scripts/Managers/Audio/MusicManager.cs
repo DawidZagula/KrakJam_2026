@@ -48,7 +48,9 @@ public class MusicManager : MonoBehaviour
         }
         else if (arg0.buildIndex == 1)
         {
-          //  PlayMusic(AudioName.MainGame);
+          if (_audioSource.isPlaying)
+            { return; }
+            PlayMusic(AudioName.Menu);
         }
     }
 
@@ -59,6 +61,11 @@ public class MusicManager : MonoBehaviour
             _audioSource.clip = _enumNameAudioClipDictionary[name];
             _audioSource.Play();
         }
+    }
+
+    public void StopPlaying()
+    {
+        _audioSource.Stop();
     }
 
 }

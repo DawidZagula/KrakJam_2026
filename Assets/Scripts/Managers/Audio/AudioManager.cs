@@ -11,7 +11,8 @@ public class AudioManager : MonoBehaviour
       Mask_cheer_up,
       Mask_Destroy,
       Mask_Repair,
-      Mask_scary
+      Mask_scary,
+      Dead_sound
     }
 
     [SerializeField] private List<AudioClip> _audioClipList = new List<AudioClip>();
@@ -52,12 +53,12 @@ public class AudioManager : MonoBehaviour
     public void PlaySound(AudioName name) => _audioSource.PlayOneShot(_enumNameAudioClipDictionary[name]);
 
     //Optional
-    public void StopAllSoundsAndPlayNew(AudioName name)
-    {
-        if (IsPlaying())
-        {
-            StopCurrentlyPlayedSound();
-            PlaySound(name);
-        }
-    }
+    //public void StopAllSoundsAndPlayNew(AudioName name)
+    //{
+    //    if (IsPlaying())
+    //    {
+    //        StopCurrentlyPlayedSound();
+    //        PlaySound(name);
+    //    }
+    //}
 }
