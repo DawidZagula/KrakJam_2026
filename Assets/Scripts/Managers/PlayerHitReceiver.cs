@@ -19,15 +19,6 @@ public class PlayerHitReceiver : MonoBehaviour
     private Coroutine _hitBackRoutine;
     private Coroutine _immmunityRoutine;
 
-
-    private void Update()
-    {
-        if (Keyboard.current.spaceKey.wasPressedThisFrame)
-        {
-            Hit();
-        }
-    }
-
     public void Hit()
     {
         if (_isImmune) { return; }
