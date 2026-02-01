@@ -24,13 +24,11 @@ public class ObstacleMask : MonoBehaviour
 
           // play sound
 
-          // Destroy(gameObject);
             return true;
         }
         else
         {
             return false;
-            //Debug.Log("Wrong mask");
         }
     }
 
