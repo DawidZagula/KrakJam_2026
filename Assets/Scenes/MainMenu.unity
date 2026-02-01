@@ -153,7 +153,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 338.02, y: -97}
+  m_AnchoredPosition: {x: 338.02, y: -263}
   m_SizeDelta: {x: 346.2749, y: 133.6448}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &47200956
@@ -176,7 +176,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Credits
+  m_text: CREDITS
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 87ffb27d6a48fb049a587570b8e116b3, type: 2}
   m_sharedMaterial: {fileID: -1448378118264995566, guid: 87ffb27d6a48fb049a587570b8e116b3, type: 2}
@@ -652,7 +652,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4346155568004530071, guid: d8468ec15d7790b4c9b79ff6766f58c7, type: 3}
       propertyPath: m_text
-      value: Return
+      value: RETURN
       objectReference: {fileID: 0}
     - target: {fileID: 4346155568004530071, guid: d8468ec15d7790b4c9b79ff6766f58c7, type: 3}
       propertyPath: m_fontSize
@@ -962,7 +962,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4346155568004530071, guid: d8468ec15d7790b4c9b79ff6766f58c7, type: 3}
       propertyPath: m_fontSize
-      value: 124
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4346155568004530071, guid: d8468ec15d7790b4c9b79ff6766f58c7, type: 3}
       propertyPath: m_fontColor.b
@@ -978,7 +978,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4346155568004530071, guid: d8468ec15d7790b4c9b79ff6766f58c7, type: 3}
       propertyPath: m_fontSizeBase
-      value: 124
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4346155568004530071, guid: d8468ec15d7790b4c9b79ff6766f58c7, type: 3}
       propertyPath: m_fontColor32.rgba
@@ -2344,8 +2344,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -55.786198}
-  m_SizeDelta: {x: 514.53, y: 501.8754}
+  m_AnchoredPosition: {x: 23, y: -245.00002}
+  m_SizeDelta: {x: 600, y: 501.8754}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1436436771
 MonoBehaviour:
@@ -2367,22 +2367,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Osoba 1
-
-    Osoba 1
-
-    Osoba 1
-
-    Osoba 1
-
-    Osoba 1
-
-    Osoba
-    1
-
-'
+  m_text: "Dawid Zagu\u0142a - programming\r\nPawe\u0142 Bieniako\u0144ski - programming\r\nMartyna
+    Tuzikiewicz - 2d art\r\nAntoniia Kozak - 2d art\r\nPiotr Hajduk - afx, music\r\nKarol
+    Baluta - game design"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 87ffb27d6a48fb049a587570b8e116b3, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 0d5e12f7b88e0db4291c83710816af03, type: 2}
   m_sharedMaterial: {fileID: -1448378118264995566, guid: 87ffb27d6a48fb049a587570b8e116b3, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -2407,14 +2396,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
-  m_fontSizeBase: 72
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -2449,7 +2438,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1436436772
@@ -2585,7 +2574,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4346155568004530071, guid: d8468ec15d7790b4c9b79ff6766f58c7, type: 3}
       propertyPath: m_fontSize
-      value: 124
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4346155568004530071, guid: d8468ec15d7790b4c9b79ff6766f58c7, type: 3}
       propertyPath: m_fontColor.b
@@ -2601,7 +2590,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4346155568004530071, guid: d8468ec15d7790b4c9b79ff6766f58c7, type: 3}
       propertyPath: m_fontSizeBase
-      value: 124
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4346155568004530071, guid: d8468ec15d7790b4c9b79ff6766f58c7, type: 3}
       propertyPath: m_fontColor32.rgba
@@ -3415,7 +3404,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -65.135376, y: -0.000019073}
+  m_AnchoredPosition: {x: -141, y: -0.000019073}
   m_SizeDelta: {x: 649.6294, y: 773.88}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &1826106941
@@ -3693,7 +3682,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4346155568004530071, guid: d8468ec15d7790b4c9b79ff6766f58c7, type: 3}
       propertyPath: m_fontSize
-      value: 124
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4346155568004530071, guid: d8468ec15d7790b4c9b79ff6766f58c7, type: 3}
       propertyPath: m_fontColor.b
@@ -3709,7 +3698,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4346155568004530071, guid: d8468ec15d7790b4c9b79ff6766f58c7, type: 3}
       propertyPath: m_fontSizeBase
-      value: 124
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4346155568004530071, guid: d8468ec15d7790b4c9b79ff6766f58c7, type: 3}
       propertyPath: m_fontColor32.rgba
