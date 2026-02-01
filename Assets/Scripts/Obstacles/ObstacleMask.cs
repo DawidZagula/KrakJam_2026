@@ -6,19 +6,22 @@ public class ObstacleMask : MonoBehaviour
     [SerializeField] private Mask _requiredMask;
 
     //Cached References
+    private BoxCollider2D _boxCollider;
     private Animator _animator;
 
     private void Awake()
     {
-        _animator = GetComponent<Animator>();
+        _boxCollider = GetComponent<BoxCollider2D>();
+        _animator = GetComponentInChildren<Animator>();
     }
 
     public bool TryDefeatObstacle(Mask playerCurrentMask)
     {
         if (playerCurrentMask == _requiredMask)
         {
-           // _animator.Play("AfterMaskHit");
-           Destroy(gameObject);
+           _animator.Play("AfterMaskHit");
+            _boxCollider.enabled = false;
+          // Destroy(gameObject);
             return true;
         }
         else
