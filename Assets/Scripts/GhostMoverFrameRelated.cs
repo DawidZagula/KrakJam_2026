@@ -54,7 +54,11 @@ public class GhostMoverFrameRelated : MonoBehaviour
 
     private void StopFlying()
     {
-        StopCoroutine(_flyingCoroutine);    
+        if (_flyingCoroutine == null)
+            return;
+
+        StopCoroutine(_flyingCoroutine);
+        _flyingCoroutine = null;
     }
 
     private IEnumerator FlyingRoutine()

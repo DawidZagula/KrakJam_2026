@@ -73,11 +73,11 @@ public class GamePausedManager : MonoBehaviour
 
         isGamePaused = !isGamePaused;
 
-        if (isGamePaused) _pausedGameUIContainer.gameObject.SetActive(true);
-        else _pausedGameUIContainer.gameObject.SetActive(false);
+        //if (isGamePaused) _pausedGameUIContainer.gameObject.SetActive(true);
+        //else _pausedGameUIContainer.gameObject.SetActive(false);
 
-        //if (isGamePaused) GameStateManager.Instance.ChangeCurrentGameState(GameState.Paused);
-        //else GameStateManager.Instance.ChangeCurrentGameState(GameState.Playing);
+        if (isGamePaused) GameStateManager.Instance.ChangeCurrentGameState(GameState.Paused);
+        else GameStateManager.Instance.ChangeCurrentGameState(GameState.Playing);
     }
 
     private void GameStateManager_OnGameStateChanged(object sender, GameStateManager.OnGameStateChangedEventArgs e)
