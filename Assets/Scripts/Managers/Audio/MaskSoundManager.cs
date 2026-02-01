@@ -39,7 +39,7 @@ public class MaskSoundManager : MonoBehaviour
             Mask currentMask = PlayerMask.Instance.GetPlayerMask();
             PlayMaskSound(currentMask);
         }
-        else if (e.NewGameState == GameState.GameOver)
+        else if (e.NewGameState == GameState.GameOver || e.NewGameState == GameState.Paused)
         {
             StopPlaying();
         }

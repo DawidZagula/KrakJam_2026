@@ -32,7 +32,7 @@ public class GhostMover : MonoBehaviour
         {
            StartCoroutine(FlyingRoutine());
         }
-        else if (e.NewGameState == GameState.GameOver)
+        else if (e.NewGameState == GameState.GameOver || e.NewGameState == GameState.Paused)
         {
             StopCoroutine(FlyingRoutine());
         }

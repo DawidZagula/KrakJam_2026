@@ -38,7 +38,7 @@ public class GhostMoverFrameRelated : MonoBehaviour
         {
             StartFlying();
         }
-        else if (e.NewGameState == GameState.GameOver)
+        else if (e.NewGameState == GameState.GameOver || e.NewGameState == GameState.Paused)
         {
             StopFlying();
         }
