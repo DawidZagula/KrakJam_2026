@@ -52,7 +52,7 @@ public class PlayerAnimator : MonoBehaviour
             //TO UPDATE FOR REPAIR MASK RUN
             _animator.Play("playerNoMaskRun");
         }
-        else if (e.NewGameState == GameState.GameOver)
+        else if (e.NewGameState == GameState.GameOver || e.NewGameState == GameState.Paused)
         {
             _animator.Play("playerNoMaskBase");
         }

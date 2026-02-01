@@ -32,5 +32,6 @@ public enum GameState
 {
     NotStarted,
     Playing,
-    GameOver
+    GameOver,
+    Paused
 }

@@ -22,7 +22,7 @@ public class Obstacle : MonoBehaviour
 
     private void GameStateManager_OnGameStateChanged(object sender, GameStateManager.OnGameStateChangedEventArgs e)
     {
-        _shouldMove = !(e.NewGameState == GameState.GameOver);
+        _shouldMove = !(e.NewGameState == GameState.GameOver || e.NewGameState == GameState.Paused);
         
     }
 
