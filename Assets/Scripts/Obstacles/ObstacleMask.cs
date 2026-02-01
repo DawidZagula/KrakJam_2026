@@ -21,6 +21,9 @@ public class ObstacleMask : MonoBehaviour
         {
            _animator.Play("AfterMaskHit");
             _boxCollider.enabled = false;
+
+          // play sound
+
           // Destroy(gameObject);
             return true;
         }

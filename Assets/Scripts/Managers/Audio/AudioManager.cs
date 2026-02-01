@@ -11,7 +11,8 @@ public class AudioManager : MonoBehaviour
       Mask_Destroy,
       Mask_Repair,
       Mask_scary,
-      Dead_sound
+      Dead_sound,
+      Electricity_cartoon
     }
 
     [SerializeField] private List<AudioClip> _audioClipList = new List<AudioClip>();

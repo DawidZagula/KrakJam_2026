@@ -42,6 +42,8 @@ public class PlayerHitReceiver : MonoBehaviour
 
         _animator.Play("playerElectroShock");
 
+        AudioManager.Instance.PlaySound(AudioManager.AudioName.Electricity_cartoon);
+
         if (_immmunityRoutine != null) { return; }
         _immmunityRoutine = StartCoroutine(ImmunityRoutine());
 
