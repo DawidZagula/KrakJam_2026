@@ -19,6 +19,8 @@ public class MaskSwapLimiter : MonoBehaviour
     [Header("UI Configuration")]
     [SerializeField] private Sprite _fullSprite;
     [SerializeField] private Sprite _emptySprite;
+    [SerializeField] private Color _emptyColor;
+    [SerializeField] private Color _fullColor;
     [SerializeField] private Image _swapsImage;
     [Space]
     [Header("Debugging Only")]
@@ -77,7 +79,8 @@ public class MaskSwapLimiter : MonoBehaviour
         if (_currentMaskSwaps == 0)
         {
             _swapsImage.sprite = _emptySprite;
-            
+            _swapsCountText.color = _emptyColor;
+
             if (_shouldReplenishFirstSwap)
             {
                 if (_replenishSwapRoutine != null) { return; }
@@ -99,6 +102,7 @@ public class MaskSwapLimiter : MonoBehaviour
             if (_swapsImage.sprite != _fullSprite)
             {
                 _swapsImage.sprite = _fullSprite;
+                _swapsCountText.color = _fullColor;
             }
             UpdateSwapsCountText();
         }
@@ -114,6 +118,7 @@ public class MaskSwapLimiter : MonoBehaviour
             if (_swapsImage.sprite != _fullSprite)
             {
                 _swapsImage.sprite = _fullSprite;
+                _swapsCountText.color = _fullColor;
             }
 
             UpdateSwapsCountText();

@@ -2064,6 +2064,8 @@ MonoBehaviour:
   _swapReplenishmentDuration: 3
   _fullSprite: {fileID: 21300000, guid: 234b716df022da1418d115a646848f2a, type: 3}
   _emptySprite: {fileID: 21300000, guid: d71ad039830477644aba0c5512adbbd6, type: 3}
+  _emptyColor: {r: 0.7529413, g: 0.7529413, b: 0.7529413, a: 1}
+  _fullColor: {r: 0.654902, g: 0.48627454, b: 0.69803923, a: 1}
   _swapsImage: {fileID: 1456753330}
   _currentMaskSwaps: 0
   _shouldReplenishFirstSwap: 0
@@ -4653,6 +4655,7 @@ MonoBehaviour:
   _obstaclePrefabs:
   - {fileID: 8505113029990664120, guid: 6811b63964e1ac544a5780661bd07646, type: 3}
   - {fileID: 8505113029990664120, guid: 9218f3dfca86a8d4e935653de2faf52a, type: 3}
+  - {fileID: 8505113029990664120, guid: be4a9f5f8376b584c98eafdd84042d1b, type: 3}
   _obstacleSpawnPoint: {fileID: 1638448960}
   _obstaclesParent: {fileID: 1091388106}
   _obstacleSpawnTime: 5
