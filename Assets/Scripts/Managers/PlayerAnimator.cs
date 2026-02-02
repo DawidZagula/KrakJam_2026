@@ -47,13 +47,14 @@ public class PlayerAnimator : MonoBehaviour
 
     private void GameStateManager_OnGameStateChanged(object sender, GameStateManager.OnGameStateChangedEventArgs e)
     {
+
         if (e.NewGameState == GameState.Playing)
         {
             _animator.Play("playerRepairMaskRun");
         }
         else if (e.NewGameState == GameState.GameOver)
         {
-            _animator.Play("playerNoMaskBase");
+            _animator.speed = 0f;
         }
     }
 
