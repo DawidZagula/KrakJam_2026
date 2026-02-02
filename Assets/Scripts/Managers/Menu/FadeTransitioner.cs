@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class FadeTransitioner : MonoBehaviour
@@ -14,6 +16,29 @@ public class FadeTransitioner : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+
+        SceneManager.sceneLoaded += SceneManager_sceneLoaded;
+    }
+
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= SceneManager_sceneLoaded;
+    }
+
+    private void SceneManager_sceneLoaded(Scene arg0, LoadSceneMode arg1)
+    {
+
+        if (arg0.buildIndex == 0)
+        {
+            StartCoroutine(FadeInNextFrame());
+        }
+    }
+
+    private IEnumerator FadeInNextFrame()
+    {
+        //waiting for the first frame to be rendered (and Canvas with it)
+        yield return new WaitForEndOfFrame();
+        FadeIn();
     }
 
     public void FadeIn(Action onFinish = null)
