@@ -13,10 +13,19 @@ public class FadeTransitioner : MonoBehaviour
     [SerializeField] private Image _imageToFade;
     [SerializeField] private float _maxDuration;
     [SerializeField] private bool _shouldFadeInAtSceneLoad = true;
+    [Space]
+    [SerializeField] private bool _shouldSetDefaultFadeColour;
+    [SerializeField] private Color _defaultFadeColour;
+
 
     private void Awake()
     {
         Instance = this;
+
+        if (_shouldSetDefaultFadeColour)
+        {
+            SetFadeColor(_defaultFadeColour);
+        }
 
         if (_shouldFadeInAtSceneLoad)
         {
@@ -49,10 +58,59 @@ public class FadeTransitioner : MonoBehaviour
     {
         StartCoroutine(FadeRoutine(_imageToFade, _imageToFade.color.a, 0f, onFinish));
     }
+    
+    public void FadeIn(Color fadeColour, Action onFinish = null)
+    {
+        SetFadeColor(fadeColour);
+        StartCoroutine(FadeRoutine(_imageToFade, _imageToFade.color.a, 0f, onFinish));
+    }
+
+    public void FadeIn(Color fadeColour, float maxDuration, Action onFinish = null)
+    {
+        SetFadeColor(fadeColour);
+        SetMaxDuration(maxDuration);
+        StartCoroutine(FadeRoutine(_imageToFade, _imageToFade.color.a, 0f, onFinish));
+    }
 
     public void FadeOut(Action onFinish = null)
     {
         StartCoroutine(FadeRoutine(_imageToFade, _imageToFade.color.a, 1f, onFinish));
+    }
+
+    public void FadeOut(Color fadeColour, Action onFinish = null)
+    {
+        SetFadeColor(fadeColour);
+        StartCoroutine(FadeRoutine(_imageToFade, _imageToFade.color.a, 1f, onFinish));
+    }
+
+    public void FadeOut(Color fadeColour, float maxDuration, Action onFinish = null)
+    {
+        SetFadeColor(fadeColour);
+        SetMaxDuration(maxDuration);
+        StartCoroutine(FadeRoutine(_imageToFade, _imageToFade.color.a, 1f, onFinish));
+    }
+
+    public void SetFadeImageToDefaultFaded()
+    {
+        Color defaultFaded = _defaultFadeColour;
+        defaultFaded.a = 1f;
+        
+        _imageToFade.color = defaultFaded;
+    }
+
+    private void SetFadeColor(Color color)
+    {
+        Color current = _imageToFade.color;
+        current.r = color.r;
+        current.g = color.g;
+        current.b = color.b;
+        _imageToFade.color = current;
+    }
+
+
+    private void SetMaxDuration(float maxDuration)
+    {
+        _maxDuration = maxDuration;
     }
 
     private IEnumerator FadeRoutine(Image imageToFade, float startAlpha, float targetAlpha, Action onFinish = null)

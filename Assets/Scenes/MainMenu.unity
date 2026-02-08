@@ -3939,6 +3939,22 @@ PrefabInstance:
       propertyPath: _maxDuration
       value: 0.25
       objectReference: {fileID: 0}
+    - target: {fileID: 8251018462179010119, guid: 36cbbe6227890c04da20646eb0278812, type: 3}
+      propertyPath: _defaultFadeColour.b
+      value: 0.08627451
+      objectReference: {fileID: 0}
+    - target: {fileID: 8251018462179010119, guid: 36cbbe6227890c04da20646eb0278812, type: 3}
+      propertyPath: _defaultFadeColour.g
+      value: 0.08627451
+      objectReference: {fileID: 0}
+    - target: {fileID: 8251018462179010119, guid: 36cbbe6227890c04da20646eb0278812, type: 3}
+      propertyPath: _defaultFadeColour.r
+      value: 0.08627451
+      objectReference: {fileID: 0}
+    - target: {fileID: 8251018462179010119, guid: 36cbbe6227890c04da20646eb0278812, type: 3}
+      propertyPath: _shouldSetDefaultFadeColour
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -15,13 +15,17 @@ public class GameOverStateManager : MonoBehaviour
 
     [Header("Displaying Configuration")]
     [SerializeField] private float _scalingTime;
+    [SerializeField] private float _fadeOutTime;
+    [SerializeField] private Color _fadeOutColour;
 
     private void Start()
     {
         GameStateManager.Instance.OnGameStateChanged += GameStateManager_OnGameStateChanged;
 
         _restartButton.onClick.AddListener(() =>
-        {     
+        {
+            FadeTransitioner.Instance.SetFadeImageToDefaultFaded();
+            
             _gameOverUIContainer.gameObject.LeanScale(Vector3.zero, _scalingTime).setOnComplete(() =>
             {
                 SceneLoader.Instance.ProcessLoadScene(Scenes.GameScene, false);
@@ -31,6 +35,8 @@ public class GameOverStateManager : MonoBehaviour
 
         _bactToMenuButton.onClick.AddListener(() =>
         {
+            FadeTransitioner.Instance.SetFadeImageToDefaultFaded();
+
             _gameOverUIContainer.gameObject.LeanScale(Vector3.zero, _scalingTime).setOnComplete(() =>
             {
                 SceneLoader.Instance.ProcessLoadScene(Scenes.MainMenu, false);
@@ -58,7 +64,7 @@ public class GameOverStateManager : MonoBehaviour
                 if (finalScoreValue) finalScoreValue.SetText(ScoreManager.Instance.GetScore().ToString());
             }
 
-            FadeTransitioner.Instance.FadeOut(DisplayWindow);
+            FadeTransitioner.Instance.FadeOut(_fadeOutColour, _fadeOutTime, DisplayWindow);
 
             MusicManager.Instance.StopPlaying();
             AudioManager.Instance.PlaySound(AudioManager.AudioName.Dead_sound);

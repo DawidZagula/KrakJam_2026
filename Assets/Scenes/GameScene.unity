@@ -857,7 +857,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.92941177}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.90588236}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1164,6 +1164,26 @@ PrefabInstance:
     - target: {fileID: 8251018462179010119, guid: 36cbbe6227890c04da20646eb0278812, type: 3}
       propertyPath: _maxDuration
       value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8251018462179010119, guid: 36cbbe6227890c04da20646eb0278812, type: 3}
+      propertyPath: _defaultFadeColour.b
+      value: 0.08627451
+      objectReference: {fileID: 0}
+    - target: {fileID: 8251018462179010119, guid: 36cbbe6227890c04da20646eb0278812, type: 3}
+      propertyPath: _defaultFadeColour.g
+      value: 0.08627451
+      objectReference: {fileID: 0}
+    - target: {fileID: 8251018462179010119, guid: 36cbbe6227890c04da20646eb0278812, type: 3}
+      propertyPath: _defaultFadeColour.r
+      value: 0.08627451
+      objectReference: {fileID: 0}
+    - target: {fileID: 8251018462179010119, guid: 36cbbe6227890c04da20646eb0278812, type: 3}
+      propertyPath: _shouldFadeInAtSceneLoad
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8251018462179010119, guid: 36cbbe6227890c04da20646eb0278812, type: 3}
+      propertyPath: _shouldSetDefaultFadeColour
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3094,7 +3114,9 @@ MonoBehaviour:
   _bactToMenuButton: {fileID: 1459467271}
   finalScoreValue: {fileID: 2084337231}
   _selectedDifficultyText: {fileID: 1422178321}
-  _scalingTime: 1
+  _scalingTime: 0.25
+  _fadeOutTime: 0.2
+  _fadeOutColour: {r: 0.1159029, g: 0.009840794, b: 0.009840794, a: 0.74509805}
 --- !u!1 &1253566961
 GameObject:
   m_ObjectHideFlags: 0
