@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections;
 
 
 public class GameOverStateManager : MonoBehaviour
@@ -12,18 +13,29 @@ public class GameOverStateManager : MonoBehaviour
     [SerializeField] private TMP_Text finalScoreValue;
     [SerializeField] private TextMeshProUGUI _selectedDifficultyText;
 
+    [Header("Displaying Configuration")]
+    [SerializeField] private float _scalingTime;
+
     private void Start()
     {
         GameStateManager.Instance.OnGameStateChanged += GameStateManager_OnGameStateChanged;
 
         _restartButton.onClick.AddListener(() =>
-        {
-            SceneLoader.Instance.ProcessLoadScene(Scenes.GameScene, true);
+        {     
+            _gameOverUIContainer.gameObject.LeanScale(Vector3.zero, _scalingTime).setOnComplete(() =>
+            {
+                SceneLoader.Instance.ProcessLoadScene(Scenes.GameScene, false);
+            });
+            
         });
 
         _bactToMenuButton.onClick.AddListener(() =>
         {
-            SceneLoader.Instance.ProcessLoadScene(Scenes.MainMenu, true);
+            _gameOverUIContainer.gameObject.LeanScale(Vector3.zero, _scalingTime).setOnComplete(() =>
+            {
+                SceneLoader.Instance.ProcessLoadScene(Scenes.MainMenu, false);
+            });
+
         });
 
         _selectedDifficultyText.text =
@@ -45,10 +57,21 @@ public class GameOverStateManager : MonoBehaviour
                 ScoreManager.Instance.StopScoring();
                 if (finalScoreValue) finalScoreValue.SetText(ScoreManager.Instance.GetScore().ToString());
             }
-            _gameOverUIContainer.gameObject.SetActive(true);
+
+            FadeTransitioner.Instance.FadeOut(DisplayWindow);
 
             MusicManager.Instance.StopPlaying();
             AudioManager.Instance.PlaySound(AudioManager.AudioName.Dead_sound);
         }
     }
+
+    private void DisplayWindow()
+    {    
+        _gameOverUIContainer.localScale = Vector3.zero;
+        _gameOverUIContainer.gameObject.SetActive(true);
+        _gameOverUIContainer.gameObject.LeanScale(Vector3.one, _scalingTime);
+    }
+
 }
+
+

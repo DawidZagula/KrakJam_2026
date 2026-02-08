@@ -1480,7 +1480,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1529568402}
   - {fileID: 613067878}
@@ -3094,6 +3094,7 @@ MonoBehaviour:
   _bactToMenuButton: {fileID: 1459467271}
   finalScoreValue: {fileID: 2084337231}
   _selectedDifficultyText: {fileID: 1422178321}
+  _scalingTime: 1
 --- !u!1 &1253566961
 GameObject:
   m_ObjectHideFlags: 0
@@ -6289,8 +6290,8 @@ RectTransform:
   - {fileID: 1143426529}
   - {fileID: 1456753329}
   - {fileID: 284390693}
-  - {fileID: 571204004}
   - {fileID: 2012526181}
+  - {fileID: 571204004}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}

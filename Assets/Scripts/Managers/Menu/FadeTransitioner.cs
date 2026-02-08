@@ -9,15 +9,19 @@ public class FadeTransitioner : MonoBehaviour
 {
     public static FadeTransitioner Instance { get; private set; }
 
+    [Header("Configuration")]
     [SerializeField] private Image _imageToFade;
-
     [SerializeField] private float _maxDuration;
+    [SerializeField] private bool _shouldFadeInAtSceneLoad = true;
 
     private void Awake()
     {
         Instance = this;
 
-        SceneManager.sceneLoaded += SceneManager_sceneLoaded;
+        if (_shouldFadeInAtSceneLoad)
+        {
+            SceneManager.sceneLoaded += SceneManager_sceneLoaded;
+        }
     }
 
     private void OnDestroy()
